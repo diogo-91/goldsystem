@@ -11,7 +11,7 @@ export function MotionSystem() {
     const media = gsap.matchMedia();
     media.add("(prefers-reduced-motion: no-preference)", () => {
       gsap.fromTo(
-        ".business-hero-copy > *",
+        ".ref-hero-copy > *",
         { y: 16, opacity: 0 },
         {
           y: 0,
@@ -23,7 +23,7 @@ export function MotionSystem() {
         },
       );
       gsap.fromTo(
-        ".sales-product-stage",
+        ".ref-hero-overlays",
         { y: 18, opacity: 0.25 },
         {
           y: 0,
@@ -35,6 +35,7 @@ export function MotionSystem() {
         },
       );
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
+        if (element.closest("dialog")) return;
         gsap.fromTo(
           element,
           { y: 18, opacity: 0.5 },
@@ -48,20 +49,6 @@ export function MotionSystem() {
           },
         );
       });
-      gsap.fromTo(
-        ".business-process-track > span",
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".business-process",
-            start: "top 75%",
-            end: "bottom 70%",
-            scrub: 0.5,
-          },
-        },
-      );
     });
     return () => media.revert();
   }, []);

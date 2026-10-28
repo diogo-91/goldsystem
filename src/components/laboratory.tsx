@@ -222,10 +222,12 @@ export function Laboratory({
   onConvert,
   tab,
   setTab,
+  initialModule = "Visão geral",
 }: {
   onConvert: (experience: string) => void;
   tab: number;
   setTab: (index: number) => void;
+  initialModule?: string;
 }) {
   const baseId = useId();
   return (
@@ -308,7 +310,7 @@ export function Laboratory({
                 </span>
                 <span>Ambiente interativo com dados fictícios.</span>
               </div>
-              <Dashboard />
+              <Dashboard key={initialModule} initialModule={initialModule} />
             </>
           ) : i === 1 ? (
             <AutomationDemo />

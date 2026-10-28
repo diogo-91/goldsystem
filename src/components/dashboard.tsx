@@ -131,8 +131,12 @@ function OrderForm({
   );
 }
 
-export default function Dashboard() {
-  const [module, setModule] = useState("Visão geral");
+export default function Dashboard({
+  initialModule = "Visão geral",
+}: {
+  initialModule?: string;
+}) {
+  const [module, setModule] = useState(initialModule);
   const [orders, setOrders] = useState<Order[]>(initialOrders);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("Todos os status");

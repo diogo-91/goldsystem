@@ -2,7 +2,7 @@
 
 Website comercial da GoldSystem, com o mesmo destaque para **sistemas sob medida, automações de processos e Inteligência Artificial**. A apresentação parte dos problemas da operação, demonstra o produto e leva o visitante a um briefing de projeto.
 
-[Ver a prévia desktop](docs/previews/desktop.png) · [Ver a prévia mobile](docs/previews/mobile.png) · [Ver as três soluções](docs/previews/solucoes.png)
+[Ver a prévia desktop](docs/previews/desktop.png) · [Ver a prévia mobile](docs/previews/mobile.png) · [Ver as soluções](docs/previews/solucoes.png) · [Ver a página completa](docs/previews/pagina-completa.png)
 
 ![Página inicial da GoldSystem](docs/previews/desktop.png)
 
@@ -28,40 +28,38 @@ Se o cache npm padrão não for gravável no ambiente de nuvem, use `NPM_CONFIG_
 
 ## O que está implementado
 
-- Abertura comercial com três ofertas de igual destaque. A prévia alterna entre um sistema de gestão navegável, uma simulação de automação e exemplos de aplicação de IA.
-- Problemas de negócio, benefícios por frente, exemplos de uso e chamadas específicas para proposta. As escolhas chegam ao formulário e à demonstração correspondente.
-- Identidade em azul-marinho e azul, tipografia de produto, interfaces reais e animações discretas com GSAP ScrollTrigger. A página não depende de WebGL.
-- Laboratório com oito módulos de gestão, criação e filtro de pedidos, alteração de status, indicadores e gráfico derivados dos pedidos, reposição fictícia de estoque, consulta de clientes, chaves de automação e exportação de CSV.
-- Simulação de cinco fluxos operacionais e três cenários de IA explicitamente predefinidos. Sem chamadas a modelos ou APIs externas.
-- Simulador de automação com cinco parâmetros; contexto transferido para o briefing.
-- Três frentes de solução, integrações, estudos demonstrativos com detalhes, comparação interativa por segmento, processo de desenvolvimento, FAQ e chamada comercial final.
-- Briefing com validação, consentimento, cópia e download de texto. Envio opcional, confirmado somente após resposta positiva do backend.
-- Fontes Geist locais, metadados em português, imagem social local, navegação por teclado, dialogs nativos e respeito a `prefers-reduced-motion`.
+- Layout inspirado na referência aprovada: fotografias de escritório, azul luminoso, botões arredondados, soluções visuais, simulador, projetos, depoimento, indicadores e FAQ.
+- Quatro cartões de soluções abrem a demonstração do módulo correspondente; o assistente apresenta as três frentes de sistemas, automações e IA.
+- Laboratório em dialog com oito módulos de gestão, pedidos, filtros, indicadores, reposição demonstrativa, clientes e exportação de CSV.
+- Simulação de fluxos e cenários de IA predefinidos, identificados como demonstrações. Não há chamadas a modelos externos.
+- Simulador com cinco parâmetros e resultados mensais/anuais calculados; o contexto acompanha o briefing.
+- Galeria de projetos com detalhes e comparação interativa de sistemas por segmento.
+- Contato direto pelo WhatsApp e e-mail confirmados. O briefing pode ser copiado, baixado ou levado ao WhatsApp; o envio da mensagem é confirmado pelo visitante no aplicativo.
+- Blog com três artigos e rotas próprias. Fontes locais, imagens WebP, metadados, navegação por teclado e movimento reduzido.
 
-Dados do laboratório ficam na memória da página. Alternar abas preserva a sessão; recarregar restaura os dados fictícios. O formulário não grava dados em cookies, localStorage ou banco.
+Clientes, descrições de projetos, depoimento, indicadores e contatos da referência foram confirmados pelo responsável para publicação. Fotografias são ilustrações geradas; detalhes em [docs/ASSETS.md](docs/ASSETS.md). Os dados do laboratório são fictícios e ficam na memória da página. O formulário não grava em cookies, localStorage ou banco.
 
 ## Estrutura principal
 
-| Local                                | Responsabilidade                                            |
-| ------------------------------------ | ----------------------------------------------------------- |
-| `src/app/page.tsx`                   | Entrada App Router e configuração de envio lida no servidor |
-| `src/components/gold-system.tsx`     | Apresentação comercial, navegação e contexto da proposta    |
-| `src/components/product-preview.tsx` | Prévias funcionais e dados das três ofertas                 |
-| `src/app/business.css`               | Identidade comercial e adaptações de tela                   |
-| `src/components/motion-system.tsx`   | ScrollTrigger e movimento reduzido                          |
-| `src/components/dashboard.tsx`       | Módulos de gestão e estado dos pedidos                      |
-| `src/components/laboratory.tsx`      | Abas, simulações de automação e IA                          |
-| `src/components/simulator.tsx`       | Controles do potencial de automação                         |
-| `src/lib/simulation.ts`              | Fórmula, limites e formatação dos resultados                |
-| `src/components/contact.tsx`         | Formulário, validação e geração do briefing                 |
-| `src/config/commercial.ts`           | Configuração comercial central, sem contatos inventados     |
-| `src/app/api/briefing/route.ts`      | Validação do servidor e encaminhamento opcional             |
-| `src/lib/delivery.ts`                | Transporte HTTPS, timeout e confirmação do destino          |
-| `src/app/globals.css`                | Sistema visual e adaptações responsivas                     |
+| Local                                   | Responsabilidade                                  |
+| --------------------------------------- | ------------------------------------------------- |
+| `src/components/gold-system.tsx`        | Página comercial, galeria e contexto da proposta  |
+| `src/components/reference-shell.tsx`    | Navegação, marca, rodapé e contatos               |
+| `src/components/site-dialog.tsx`        | Janelas nativas, foco e fechamento                |
+| `src/app/reference.css`                 | Identidade visual e responsividade                |
+| `src/components/dashboard.tsx`          | Módulos e pedidos demonstrativos                  |
+| `src/components/laboratory.tsx`         | Demonstrações de gestão, automação e IA           |
+| `src/components/simulator.tsx`          | Simulador e período de resultado                  |
+| `src/lib/simulation.ts`                 | Fórmula e limites dos parâmetros                  |
+| `src/components/contact.tsx`            | Formulário, briefing e WhatsApp                   |
+| `src/config/commercial.ts`              | Contatos, clientes e dados comerciais confirmados |
+| `src/app/blog/` e `src/lib/articles.ts` | Blog e conteúdo dos artigos                       |
+| `src/app/api/briefing/route.ts`         | Validação e encaminhamento opcional               |
+| `src/lib/delivery.ts`                   | Transporte HTTPS e confirmação do destino         |
 
 ## Configuração comercial e backend
 
-O site funciona sem credenciais. Por padrão, **Gerar meu briefing** prepara um texto para copiar ou baixar e informa explicitamente que não houve envio.
+O site funciona sem credenciais. Por padrão, **Gerar meu briefing** prepara um texto para copiar, baixar ou continuar pelo WhatsApp e informa que a geração não enviou dados.
 
 Para ativar o envio, configure no servidor:
 
@@ -105,7 +103,7 @@ O destino pode ser uma Supabase Edge Function ou outro endpoint HTTPS controlado
 
 O endpoint deve responder `2xx` **depois** de aceitar a entrega. O site aplica timeout de 10 segundos, recusa redirecionamentos e informa falha sem exibir sucesso se o destino não confirmar. A confirmação se refere ao recebimento pelo backend; entrega de e-mail, armazenamento e atendimento dependem dele.
 
-Antes de habilitar envio público, definir retenção de dados, acesso ao backend, proteção contra abuso e canal para exercício dos direitos de privacidade. Rever o texto de privacidade do site conforme a operação real. Nenhum telefone, e-mail comercial, depoimento ou case de cliente foi inventado.
+Antes de habilitar envio público, definir retenção de dados, acesso ao backend, proteção contra abuso e canal para exercício dos direitos de privacidade. Rever o texto de privacidade do site conforme a operação real. Os contatos e dados comerciais publicados foram confirmados pelo responsável pelo site.
 
 ## Verificação
 
@@ -129,13 +127,13 @@ O Playwright inicia a versão de produção; execute o build antes. Se já houve
 
 O cenário de contato integrado abre um servidor temporário na porta 3002 e simula respostas HTTP no navegador. Verifica carregamento, bloqueio de edição, falha e confirmação sem chamar um webhook externo. Mantenha essa porta disponível durante os testes.
 
-São exercitados pedidos, busca, filtros, módulos, fluxos de automação, cenários de IA, sliders, comparação, briefing, cópia, download, API sem backend, teclado, modal, menu mobile e contraste com axe. Capturas completas em 1440, 1280, 768 e 390 px ficam em `test-results/`; o relatório fica em `playwright-report/` (ambos ignorados). Use `npx playwright show-report` para inspecionar localmente.
+São exercitados pedidos, busca, filtros, módulos, automação, cenários de IA, sliders, comparação, briefing, cópia, download, API, teclado, dialogs, galeria, blog, menu mobile e contraste com axe. Capturas completas em 1440, 1280, 768 e 390 px ficam em `test-results/`; o relatório fica em `playwright-report/` (ambos ignorados). Use `npx playwright show-report` para inspecionar localmente.
 
 As capturas documentam o HTML e as interfaces efetivamente renderizadas no navegador. As prévias selecionadas para revisão ficam em `docs/previews/`.
 
 ## Publicação
 
-O projeto requer hospedagem com suporte ao servidor Next.js se o envio de briefing for ativado. Configure o domínio real para os metadados sociais e valide o destino comercial. Os exemplos de aplicações são estudos fictícios; substituir por cases reais exige autorização.
+O projeto requer hospedagem com suporte ao servidor Next.js se o envio de briefing for ativado. Configure o domínio real para os metadados sociais e valide o destino comercial. Os projetos e indicadores publicados foram autorizados; as fotografias e os dados das demonstrações são ilustrativos.
 
 LCP ≤ 2,5 s, INP ≤ 200 ms e CLS ≤ 0,1 são metas. A validação de layout e funcionalidade em Chromium local não comprova Core Web Vitals em produção. Medir em dispositivos e redes representativos após publicar, incluindo navegadores móveis reais.
 

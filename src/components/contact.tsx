@@ -9,7 +9,7 @@ import {
   LoaderCircle,
   X,
 } from "lucide-react";
-import { commercial } from "@/config/commercial";
+import { commercial, whatsappLink } from "@/config/commercial";
 import {
   generateBriefing,
   validateBriefing,
@@ -215,7 +215,7 @@ export function Contact({
           <p>
             {enabled
               ? "Seus dados serão encaminhados somente após sua confirmação."
-              : "O envio direto ainda não está disponível. Você poderá copiar ou baixar o briefing. Nenhum dado será enviado."}
+              : "Prepare seu briefing e continue a conversa pelo WhatsApp. Você também pode copiar ou baixar o texto."}
           </p>
         </div>
       </div>
@@ -335,12 +335,31 @@ export function Contact({
             Concordo com o uso destes dados para preparar meu briefing e, se o
             envio estiver disponível, encaminhá-lo para análise do projeto. Os
             campos ficam apenas nesta página até uma ação de envio.{" "}
-            <a href="#privacidade">Saiba mais.</a>
+            <a
+              href="#contact-privacy"
+              onClick={() =>
+                document
+                  .getElementById("contact-privacy")
+                  ?.setAttribute("open", "")
+              }
+            >
+              Saiba mais.
+            </a>
           </span>
         </label>
         {errors.consent && (
           <span className="field-error">{errors.consent}</span>
         )}
+        <details id="contact-privacy" className="ref-contact-privacy">
+          <summary>Como seus dados são usados</summary>
+          <p>
+            Usamos os campos informados para preparar seu briefing. O envio para
+            análise do projeto só acontece após sua ação. Copiar ou baixar o
+            texto não encaminha dados. Ao continuar no WhatsApp, a mensagem é
+            preparada no aplicativo e você confirma o envio. Para dúvidas sobre
+            seus dados, fale com {commercial.email}.
+          </p>
+        </details>
         <button
           type="submit"
           className="button button-blue contact-submit"
@@ -385,6 +404,14 @@ export function Contact({
               rows={10}
             />
             <div className="briefing-actions">
+              <a
+                className="ref-button cyan"
+                href={whatsappLink(briefing)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Continuar no WhatsApp <ArrowUpRight size={16} />
+              </a>
               <button
                 className="button button-blue"
                 disabled={status === "loading"}
@@ -403,6 +430,10 @@ export function Contact({
                 Baixar .txt <ArrowDownToLine size={16} />
               </button>
             </div>
+            <p className="ref-whatsapp-note">
+              O WhatsApp abre com o briefing preenchido. Você confirma o envio
+              no aplicativo.
+            </p>
           </div>
         )}
       </form>

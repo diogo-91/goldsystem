@@ -5,12 +5,33 @@ import { spawn } from "node:child_process";
 
 const require = createRequire(import.meta.url);
 
+const openDemo = async (page: Page) => {
+  if (
+    !(await page
+      .getByRole("button", { name: "Fechar demonstração", exact: true })
+      .isVisible())
+  ) {
+    await page
+      .getByRole("button", { name: "Ver como funciona", exact: true })
+      .click();
+  }
+};
+const openBriefing = async (page: Page) => {
+  if (!(await page.getByRole("textbox", { name: /^Seu nome/ }).isVisible())) {
+    await page
+      .getByRole("button", {
+        name: "Quero um sistema personalizado",
+        exact: true,
+      })
+      .click();
+  }
+};
+
 const fillBriefing = async (page: Page) => {
+  await openBriefing(page);
   await page.getByLabel("Seu nome", { exact: false }).fill("Pessoa de teste");
   await page
-    .getByLabel("Empresa", { exact: false })
-    .filter({ visible: true })
-    .first()
+    .getByRole("textbox", { name: /^Empresa/ })
     .fill("Empresa fictícia");
   await page.getByLabel("WhatsApp", { exact: false }).fill("15999999999");
   await page.getByLabel("E-mail", { exact: false }).fill("teste@example.com");
@@ -28,6 +49,7 @@ test("gestão: criar e filtrar pedido, alterar status e navegar pelos oito módu
   page,
 }) => {
   await page.goto("/");
+  await openDemo(page);
   await page
     .getByRole("tab", { name: /Sistema de gestão/ })
     .scrollIntoViewIfNeeded();
@@ -37,7 +59,7 @@ test("gestão: criar e filtrar pedido, alterar status e navegar pelos oito módu
   await page
     .getByRole("button", { name: "Criar pedido demonstrativo" })
     .click();
-  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page.locator(".order-dialog")).toHaveCount(0);
   await expect(page.getByTestId("order-total")).toHaveText(/12.990/);
   const search = page.getByRole("textbox", { name: "Buscar pedidos" });
   await search.fill("GS-1049");
@@ -83,6 +105,7 @@ test("laboratório: fluxo executa todas as etapas e IA mostra apenas exemplos se
   page,
 }) => {
   await page.goto("/");
+  await openDemo(page);
   await page.getByRole("tab", { name: /Automação de processos/ }).click();
   await page
     .getByLabel("Processo para explorar")
@@ -130,6 +153,10 @@ test("simulador, comparação e briefing conservam o contexto sem fingir envio",
   await employees.fill("10");
   await expect(page.getByTestId("hours-output")).toHaveText("264");
   await expect(page.getByTestId("annual-output")).toHaveText(/110.880/);
+  await page.getByRole("button", { name: "Por ano", exact: true }).click();
+  await expect(page.getByTestId("annual-output")).toBeVisible();
+  await page.getByRole("button", { name: "Por mês", exact: true }).click();
+  await openDemo(page);
   await page.getByLabel("Experimente outro negócio").selectOption("Indústria");
   await expect(page.locator(".system-map")).toContainText("Produção");
   await page
@@ -139,6 +166,9 @@ test("simulador, comparação e briefing conservam o contexto sem fingir envio",
   await expect(page.locator(".system-map")).toContainText(
     "Módulo indisponível",
   );
+  await page
+    .getByRole("button", { name: "Fechar demonstração", exact: true })
+    .click();
   await page
     .getByRole("link", { name: "Quero analisar esse potencial" })
     .click();
@@ -305,26 +335,57 @@ test("briefing integrado: bloqueia edição durante envio e exige aceite do dest
   }
 });
 
-test("teclado, estudos demonstrativos e movimento reduzido", async ({
-  page,
-}) => {
+test("teclado, projetos e movimento reduzido", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
+  await openDemo(page);
   const first = page.getByRole("tab", { name: /Sistema de gestão/ });
   await first.focus();
   await page.keyboard.press("ArrowRight");
   await expect(
     page.getByRole("tab", { name: /Automação de processos/ }),
   ).toBeFocused();
-  await page.getByRole("button", { name: "Da encomenda à entrega." }).click();
-  await expect(page.getByRole("dialog")).toBeVisible();
-  await page.keyboard.press("Escape");
-  await expect(page.getByRole("dialog")).toHaveCount(0);
-  await page.getByRole("button", { name: "Da encomenda à entrega." }).click();
   await page
-    .getByRole("link", { name: "Quero algo assim no meu negócio" })
+    .getByRole("button", { name: "Fechar demonstração", exact: true })
     .click();
-  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await page
+    .getByRole("button", { name: "Ver projeto Delicius", exact: true })
+    .click();
+  await expect(
+    page.getByRole("dialog", { name: "Delicius", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(
+    page.getByRole("dialog", { name: "Delicius", exact: true }),
+  ).toHaveCount(0);
+  await page
+    .getByRole("button", { name: "Ver todos os projetos", exact: true })
+    .click();
+  const catalog = page.getByRole("dialog", {
+    name: "Projetos da GoldSystem",
+    exact: true,
+  });
+  await expect(catalog.locator(".ref-project-card")).toHaveCount(3);
+  await catalog.getByRole("button", { name: /Material de Construção/ }).click();
+  await expect(
+    page.getByRole("dialog", { name: "Material de Construção", exact: true }),
+  ).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page
+    .getByRole("button", { name: "Ver projeto Delicius", exact: true })
+    .click();
+  await page
+    .getByRole("button", {
+      name: "Quero algo assim no meu negócio",
+      exact: true,
+    })
+    .click();
+  await expect(
+    page.getByRole("dialog", {
+      name: "Vamos conversar sobre seu projeto",
+      exact: true,
+    }),
+  ).toBeVisible();
   expect(
     await page.evaluate(
       () => getComputedStyle(document.documentElement).scrollBehavior,
@@ -345,7 +406,7 @@ for (const width of [1440, 1280, 768, 390]) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "Sistemas, automações e IA",
+      "Tecnologia",
     );
     await page.evaluate(async () => {
       await document.fonts.ready;
@@ -375,7 +436,7 @@ for (const width of [1440, 1280, 768, 390]) {
       await page.getByRole("button", { name: "Abrir menu" }).click();
       await page
         .locator("header")
-        .getByRole("link", { name: "Experiências", exact: true })
+        .getByRole("link", { name: "Soluções", exact: true })
         .click();
       await expect(
         page.getByRole("button", { name: "Abrir menu" }),
@@ -385,67 +446,87 @@ for (const width of [1440, 1280, 768, 390]) {
   });
 }
 
-test("as três ofertas apresentam produtos e levam à demonstração correta", async ({
+test("as três frentes abrem as demonstrações correspondentes", async ({
   page,
 }) => {
   await page.goto("/");
-  const choices = page.getByRole("group", {
-    name: "Conheça as soluções GoldSystem",
-  });
-  await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Sistemas, automações e IA",
+  const assistant = page.locator(".ref-assistant");
+  await expect(assistant.getByRole("button")).toHaveCount(3);
+  for (const [action, tabName] of [
+    ["Organizar pedidos e gestão", "Sistema de gestão"],
+    ["Automatizar um processo", "Automação de processos"],
+    ["Analisar informações do negócio", "Inteligência Artificial"],
+  ]) {
+    await assistant.getByRole("button", { name: action, exact: true }).click();
+    await expect(
+      page.getByRole("tab", { name: new RegExp(tabName) }),
+    ).toHaveAttribute("aria-selected", "true");
+    await page
+      .getByRole("button", { name: "Fechar demonstração", exact: true })
+      .click();
+  }
+  await expect(page.locator(".ref-stats")).toContainText("50+");
+  await expect(page.locator(".ref-stats")).toContainText("98%");
+  await expect(page.locator(".ref-header-contact")).toHaveAttribute(
+    "href",
+    /^https:\/\/wa.me\/5515999999999/,
   );
-  await expect(choices.getByRole("button")).toHaveCount(3);
-  await page
-    .getByRole("complementary", { name: "Módulos da prévia do sistema" })
-    .getByRole("button", { name: "Estoque", exact: true })
-    .click();
-  await expect(page.getByTestId("hero-product-preview")).toContainText(
-    "Seu estoque, à vista.",
-  );
-  await choices
-    .getByRole("button", { name: "Automações", exact: true })
-    .click();
-  await page
-    .getByRole("button", { name: "Simular fluxo", exact: true })
-    .click();
-  await expect(page.locator(".sales-flow-footer")).toContainText(
-    "Simulação concluída",
-  );
-  await expect(page.locator(".sales-flow > .executed")).toHaveCount(4);
-  await page.locator(".sales-preview-cta").click();
   await expect(
-    page.getByRole("tab", { name: /Automação de processos/ }),
-  ).toHaveAttribute("aria-selected", "true");
-  await choices
-    .getByRole("button", { name: "Inteligência Artificial", exact: true })
-    .click();
-  await page
-    .getByRole("group", { name: "Exemplos de aplicação de IA" })
-    .getByRole("button", { name: "Financeiro", exact: true })
-    .click();
-  await expect(page.locator(".sales-ai-output")).toContainText("R$ 3.240");
-  await page.locator(".sales-preview-cta").click();
-  await expect(
-    page.getByRole("tab", { name: /Inteligência Artificial/ }),
-  ).toHaveAttribute("aria-selected", "true");
+    page.getByRole("link", { name: "contato@goldsystem.com.br", exact: true }),
+  ).toHaveAttribute("href", "mailto:contato@goldsystem.com.br");
 });
 
-test("cada oferta comercial preserva a solução no formulário de proposta", async ({
+test("cada solução abre o módulo correto e mantém o contexto da proposta", async ({
   page,
 }) => {
   await page.goto("/");
-  for (const [action, solution] of [
-    ["Quero desenvolver meu sistema", "Software sob medida"],
-    ["Quero automatizar minha operação", "Automação inteligente"],
-    ["Quero aplicar IA na minha empresa", "Inteligência Artificial"],
+  for (const [action, heading, solution] of [
+    ["Conhecer Gestão Comercial", "Pedidos", "Software sob medida"],
+    ["Conhecer Controle de Estoque", "Estoque", "Software sob medida"],
+    ["Conhecer Financeiro", "Financeiro", "Software sob medida"],
+    ["Conhecer Automações com IA", "", "Inteligência Artificial"],
   ]) {
-    await page.getByRole("link", { name: action, exact: true }).click();
+    await page.getByRole("button", { name: action, exact: true }).click();
+    if (heading)
+      await expect(page.locator(".dash-heading h4")).toHaveText(heading);
+    else
+      await expect(
+        page.getByRole("tab", { name: /Inteligência Artificial/ }),
+      ).toHaveAttribute("aria-selected", "true");
+    await page
+      .getByRole("link", {
+        name: "Quero desenvolver minha solução",
+        exact: true,
+      })
+      .click();
     await expect(page.getByLabel("O que você tem em mente?")).toHaveValue(
       solution,
     );
-    await expect(page.locator(".briefing-context")).toBeVisible();
+    await page
+      .getByRole("button", { name: "Fechar formulário", exact: true })
+      .click();
   }
+});
+
+test("blog tem conteúdo navegável e retorna 404 para artigo inexistente", async ({
+  page,
+  request,
+}) => {
+  await page.goto("/blog");
+  await expect(page.locator(".ref-blog-grid article")).toHaveCount(3);
+  await page
+    .locator(".ref-blog-grid article")
+    .first()
+    .getByRole("link")
+    .click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Quando um sistema sob medida faz sentido para sua empresa?",
+  );
+  await expect(page.locator(".ref-article-body > section")).toHaveCount(3);
+  await page.getByRole("link", { name: "Voltar ao blog", exact: true }).click();
+  await expect(page.locator(".ref-blog-grid article")).toHaveCount(3);
+  const missing = await request.get("/blog/artigo-inexistente");
+  expect(missing.status()).toBe(404);
 });
 
 test("acessibilidade: sem violações sérias ou críticas nos estados principais", async ({
@@ -489,17 +570,21 @@ test("acessibilidade: sem violações sérias ou críticas nos estados principai
         }));
     });
   expect(await check()).toEqual([]);
-  const offers = page.getByRole("group", {
-    name: "Conheça as soluções GoldSystem",
-  });
-  await offers.getByRole("button", { name: "Automações", exact: true }).click();
-  expect(await check()).toEqual([]);
-  await offers
-    .getByRole("button", { name: "Inteligência Artificial", exact: true })
-    .click();
-  expect(await check()).toEqual([]);
+  await openDemo(page);
   await page.getByRole("tab", { name: /Automação de processos/ }).click();
   expect(await check()).toEqual([]);
   await page.getByRole("tab", { name: /Inteligência Artificial/ }).click();
+  expect(await check()).toEqual([]);
+  await page
+    .getByRole("button", { name: "Fechar demonstração", exact: true })
+    .click();
+  await openBriefing(page);
+  expect(await check()).toEqual([]);
+  await page
+    .getByRole("button", { name: "Fechar formulário", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Ver todos os projetos", exact: true })
+    .click();
   expect(await check()).toEqual([]);
 });

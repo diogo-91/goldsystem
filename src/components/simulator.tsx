@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Minus, Plus } from "lucide-react";
+import { ArrowRight, ChevronDown, Clock3, Info } from "lucide-react";
 import {
   brl,
   calculatePotential,
@@ -24,7 +24,7 @@ const controls: {
     min: 1,
     max: 100,
     step: 1,
-    unit: "pessoas",
+    unit: "",
   },
   {
     key: "hoursPerDay",
@@ -35,20 +35,20 @@ const controls: {
     unit: "h",
   },
   {
-    key: "daysPerMonth",
-    label: "Dias trabalhados por mês",
-    min: 1,
-    max: 31,
-    step: 1,
-    unit: "dias",
-  },
-  {
     key: "hourlyCost",
     label: "Custo médio por hora",
     min: 0,
     max: 500,
     step: 5,
     unit: "R$",
+  },
+  {
+    key: "daysPerMonth",
+    label: "Dias trabalhados por mês",
+    min: 1,
+    max: 31,
+    step: 1,
+    unit: "dias",
   },
   {
     key: "automationPercent",
@@ -66,119 +66,122 @@ export function Simulator({
   onConvert: (inputs: SimulatorInputs) => void;
 }) {
   const [inputs, setInputs] = useState(defaultInputs);
+  const [annual, setAnnual] = useState(false);
   const result = calculatePotential(inputs);
+  const renderControl = (control: (typeof controls)[number]) => (
+    <div className="ref-range" key={control.key}>
+      <label htmlFor={`sim-${control.key}`}>
+        {control.label}
+        {control.key === "hoursPerDay" && <span> (horas/dia)</span>}
+      </label>
+      <div>
+        <input
+          id={`sim-${control.key}`}
+          type="range"
+          min={control.min}
+          max={control.max}
+          step={control.step}
+          value={inputs[control.key]}
+          onChange={(event) =>
+            setInputs((previous) => ({
+              ...previous,
+              [control.key]: Number(event.target.value),
+            }))
+          }
+          style={
+            {
+              "--range-progress": `${((inputs[control.key] - control.min) / (control.max - control.min)) * 100}%`,
+            } as React.CSSProperties
+          }
+        />
+        <output htmlFor={`sim-${control.key}`}>
+          {number(inputs[control.key])}
+          {control.unit === "%" ? "%" : ""}
+        </output>
+      </div>
+    </div>
+  );
   return (
-    <section id="simulador" className="simulator section-pad">
-      <div className="section-kicker">
-        <span>ENTENDA O POTENCIAL DE AUTOMAÇÃO</span>
-        <span>SIMULADOR DE POSSIBILIDADES</span>
-      </div>
-      <div className="simulator-heading" data-reveal>
-        <h2>
-          Seu tempo vale mais
-          <br />
-          do que <span>tarefas repetitivas.</span>
-        </h2>
-        <p>
-          O que sua equipe poderia fazer com mais tempo?
-          <br />
-          Explore o potencial de automação da sua operação.
-        </p>
-      </div>
-      <div className="simulator-layout">
-        <div className="simulator-controls">
-          {controls.map((c) => (
-            <div className="range-control" key={c.key}>
-              <div>
-                <label htmlFor={`sim-${c.key}`}>{c.label}</label>
-                <output htmlFor={`sim-${c.key}`}>
-                  {c.unit === "R$"
-                    ? brl(inputs[c.key])
-                    : `${number(inputs[c.key])} ${c.unit}`}
-                </output>
-              </div>
-              <div className="range-track">
-                <Minus size={12} aria-hidden="true" />
-                <input
-                  id={`sim-${c.key}`}
-                  type="range"
-                  min={c.min}
-                  max={c.max}
-                  step={c.step}
-                  value={inputs[c.key]}
-                  onChange={(e) =>
-                    setInputs({ ...inputs, [c.key]: Number(e.target.value) })
-                  }
-                  style={
-                    {
-                      "--range-progress": `${((inputs[c.key] - c.min) / (c.max - c.min)) * 100}%`,
-                    } as React.CSSProperties
-                  }
-                />
-                <Plus size={12} aria-hidden="true" />
-              </div>
-            </div>
-          ))}
+    <section id="simulador" className="ref-simulator">
+      <div className="ref-container ref-simulator-grid">
+        <div className="ref-simulator-copy">
+          <span className="ref-eyebrow light">SIMULADOR</span>
+          <h2>
+            Veja o impacto de um sistema no <span>seu negócio.</span>
+          </h2>
+          <p>
+            Calcule quanto tempo e dinheiro sua empresa pode recuperar com
+            processos mais inteligentes.
+          </p>
+          <div className="ref-simulator-controls">
+            {controls.slice(0, 3).map(renderControl)}
+            <details className="ref-simulator-advanced">
+              <summary>
+                Parâmetros da simulação <ChevronDown size={13} />
+              </summary>
+              {controls.slice(3).map(renderControl)}
+            </details>
+          </div>
         </div>
-        <div className="simulator-results">
-          <div className="orbit-decoration" aria-hidden="true">
-            <svg viewBox="0 0 300 300">
-              <circle cx="150" cy="150" r="130" />
-              <circle
-                className="orbit-progress"
-                cx="150"
-                cy="150"
-                r="130"
-                strokeDasharray={`${result.percent * 8.168} 816.8`}
-                transform="rotate(-90 150 150)"
-              />
-            </svg>
+        <div className="ref-economy-card">
+          <span>Seu potencial de economia</span>
+          <div
+            className="ref-period"
+            role="group"
+            aria-label="Período do resultado"
+          >
+            <button aria-pressed={!annual} onClick={() => setAnnual(false)}>
+              Por mês
+            </button>
+            <button aria-pressed={annual} onClick={() => setAnnual(true)}>
+              Por ano
+            </button>
+          </div>
+          <div className="ref-economy-value">
+            <output data-testid="monthly-output" hidden={annual}>
+              {brl(result.monthly)}
+            </output>
+            <output data-testid="annual-output" hidden={!annual}>
+              {brl(result.annual)}
+            </output>
+          </div>
+          <p>
+            Equivalente {annual ? "anual" : "mensal"} do tempo potencialmente
+            recuperável
+          </p>
+          <div className="ref-economy-context">
+            <Clock3 size={22} />
             <span>
-              {result.percent}%<small>POTENCIAL SIMULADO</small>
+              <strong>
+                <output
+                  data-testid="hours-output"
+                  aria-label="Horas potencialmente recuperáveis por mês"
+                >
+                  {number(result.hours)}
+                </output>{" "}
+                horas por mês
+              </strong>
+              Com {inputs.daysPerMonth} dias trabalhados e{" "}
+              {inputs.automationPercent}% de automação estimada.
             </span>
           </div>
-          <div className="recovered">
-            <span>MAIS ESPAÇO PARA O QUE IMPORTA</span>
-            <div>
-              <output
-                data-testid="hours-output"
-                aria-label="Horas potencialmente recuperáveis por mês"
-              >
-                {number(result.hours)}
-              </output>
-              <span>
-                horas<small>por mês</small>
-              </span>
-            </div>
-            <p>potencialmente recuperáveis na sua operação.</p>
-          </div>
-          <div className="equivalent-values">
-            <div>
-              <span>Equivalente mensal</span>
-              <output data-testid="monthly-output">
-                {brl(result.monthly)}
-              </output>
-            </div>
-            <div>
-              <span>Equivalente anual</span>
-              <output data-testid="annual-output">{brl(result.annual)}</output>
-            </div>
-          </div>
+          <a
+            className="ref-button cyan"
+            href="#contato"
+            onClick={() => onConvert({ ...inputs })}
+          >
+            Quero analisar esse potencial <ArrowRight size={16} />
+          </a>
+          <small>
+            <Info size={12} /> Estimativa ilustrativa, sem garantia de economia
+            financeira.
+          </small>
         </div>
-      </div>
-      <div className="simulator-bottom">
-        <p>
-          Estimativa ilustrativa, não uma garantia de economia financeira.
-          Cálculo: pessoas × horas/dia × dias/mês × percentual automatizável. O
-          valor equivalente considera o custo por hora informado.
-        </p>
-        <a
-          className="button button-white"
-          href="#contato"
-          onClick={() => onConvert({ ...inputs })}
-        >
-          Quero analisar esse potencial <ArrowUpRight size={17} />
-        </a>
+        <div className="ref-simulator-caption" aria-hidden="true">
+          Menos tarefas.
+          <br />
+          <span>Mais resultados.</span>
+        </div>
       </div>
     </section>
   );

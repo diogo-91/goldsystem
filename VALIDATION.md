@@ -1,29 +1,30 @@
-# Validação da revisão comercial
+# Validação do layout de referência
 
-Validação realizada em 28/10/2026, nesta máquina Linux x64, com Node.js 24.19.0, npm 11.9.0 e Chromium.
+Revisão realizada em 28/10/2026, em Linux x64, com Node.js 24.19.0, npm 11.9.0 e Chromium.
 
-A apresentação foi refeita para dar o mesmo destaque a sistemas sob medida, automações de processos e Inteligência Artificial. A abertura mostra o produto, os problemas de negócio e chamadas específicas para proposta. As prévias em `docs/previews/` são capturas do site efetivamente renderizado.
+A página segue a referência aprovada: abertura fotográfica escura, azul luminoso, cartões de soluções, simulador, projetos, benefícios, depoimento, indicadores e FAQ. As capturas em `docs/previews/` mostram o site renderizado no navegador.
 
-| Verificação                             | Resultado                                                 |
-| --------------------------------------- | --------------------------------------------------------- |
-| Build de produção (`npm run build`)     | Aprovado                                                  |
-| ESLint (`npm run lint`)                 | Sem erros ou avisos                                       |
-| TypeScript (`npm run typecheck`)        | Aprovado                                                  |
-| Testes de unidade (`npm test`)          | 8 aprovados; nenhum ignorado                              |
-| Suíte de navegador (`npm run test:e2e`) | 13 cenários aprovados; nenhum ignorado                    |
-| Layout em 1440, 1280, 768 e 390 px      | Sem overflow horizontal ou erros de execução              |
-| axe nas prévias e no laboratório        | Nenhuma violação séria ou crítica nos estados verificados |
+| Verificação                                        | Resultado                                                 |
+| -------------------------------------------------- | --------------------------------------------------------- |
+| Build de produção                                  | Aprovado                                                  |
+| ESLint                                             | Sem erros ou avisos                                       |
+| TypeScript                                         | Aprovado, inclusive no build final                        |
+| Testes de unidade                                  | 8 aprovados; nenhum ignorado                              |
+| Testes de navegador                                | 14 cenários aprovados; nenhum ignorado                    |
+| Layout em 1440, 1280, 768 e 390 px                 | Sem overflow horizontal ou erros de execução              |
+| axe na página, demonstrações, formulário e galeria | Nenhuma violação séria ou crítica nos estados verificados |
+| Blog e artigo em 390 px                            | Sem overflow e sem violações sérias ou críticas do axe    |
+| Conferência adicional em 320, 360, 1024 e 1920 px  | Sem overflow ou erros; menu de 320 px visível e navegável |
 
-Foram exercitados criação e atualização de pedidos, filtros, indicadores, oito módulos, reposição demonstrativa, automação, cenários predefinidos de IA, cálculo do simulador, transferência de contexto, comparação por segmento, briefing, cópia, download, modal, teclado e menu mobile.
+A suíte completa aprovou 13 cenários e identificou contraste insuficiente no botão do formulário. Após a correção, o cenário de acessibilidade foi reexecutado e aprovado. Os demais testes já estavam aprovados; não houve cenários ignorados.
 
-Também foram verificados os caminhos comerciais: as três ofertas alternam a prévia, abrem a demonstração correspondente e preenchem a solução desejada no formulário. O modo de contato integrado foi testado com respostas HTTP simuladas, sem encaminhar dados para um destino externo.
+Foram exercitados pedidos, filtros, oito módulos, reposição demonstrativa, automação, cenários predefinidos de IA, cálculo mensal/anual, transferência de contexto, comparação por segmento, briefing, cópia, download, API, teclado, dialogs, galeria, artigos, página 404 e menu mobile. As três frentes e os cartões de soluções abrem a experiência correspondente. As animações respeitam a preferência por movimento reduzido.
 
-A página não depende mais de WebGL ou de uma escultura 3D. As animações de entrada e rolagem respeitam a preferência por movimento reduzido.
+O contato integrado foi verificado com respostas HTTP simuladas, incluindo falha e confirmação, sem enviar dados para um destino externo. Os links de WhatsApp e e-mail foram conferidos; nenhuma mensagem foi enviada durante os testes.
 
-## Limites
+## Conteúdo e limites
 
-- Os dados, aplicações e exemplos de IA são demonstrativos, sem resultados comerciais ou clientes inventados.
-- O envio real de propostas depende de um backend configurado. Por padrão, o formulário gera, copia e baixa o briefing sem enviar dados.
-- Um WhatsApp ou e-mail comercial real ainda precisa ser fornecido para conectar um canal direto de atendimento.
-- Core Web Vitals em produção, dispositivos móveis físicos e o deploy na hospedagem não foram verificados nesta revisão.
-- O rascunho do ambiente preserva `install_script` e `start_skill`; a publicação do ambiente é independente do envio de código ao GitHub.
+- Clientes, projetos, depoimento, indicadores e contatos da referência foram confirmados pelo responsável para publicação.
+- Fotografias são ilustrações geradas. O laboratório usa dados fictícios; o simulador apresenta uma estimativa calculada pelos controles.
+- O briefing pode continuar pelo WhatsApp, ser copiado ou baixado. O envio pelo formulário depende de um backend configurado.
+- O deploy e as métricas de desempenho em produção não foram verificados. Dispositivos físicos e outros navegadores permanecem fora desta validação local.

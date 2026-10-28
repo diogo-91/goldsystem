@@ -1,604 +1,667 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  ArrowDown,
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  BadgeCheck,
+  BarChart3,
+  Box,
   Check,
   ChevronDown,
   ClipboardList,
-  Menu,
-  MessageSquareText,
-  Plug,
+  Headset,
+  Layers3,
+  Play,
+  Puzzle,
+  Quote,
+  ShieldCheck,
   Sparkles,
   Workflow,
-  X,
 } from "lucide-react";
+import { ReferenceFooter, ReferenceHeader } from "./reference-shell";
+import { SiteDialog } from "./site-dialog";
 import { Contact } from "./contact";
 import { Laboratory } from "./laboratory";
-import { Simulator } from "./simulator";
-import { Studies } from "./studies";
 import { Comparison } from "./comparison";
+import { Simulator } from "./simulator";
 import { MotionSystem } from "./motion-system";
-import { ProductPreview, businessOffers } from "./product-preview";
+import { commercial, whatsappLink } from "@/config/commercial";
 import type { BriefingContext } from "@/lib/briefing";
 
+const solutions = [
+  {
+    title: "Gestão Comercial",
+    description: "Pedidos, orçamentos, CRM e atendimento.",
+    icon: ClipboardList,
+    tile: 0,
+    module: "Pedidos",
+    tab: 0,
+  },
+  {
+    title: "Controle de Estoque",
+    description: "Entradas, saídas, alertas e inventário.",
+    icon: Box,
+    tile: 1,
+    module: "Estoque",
+    tab: 0,
+  },
+  {
+    title: "Financeiro",
+    description: "Contas a pagar e receber, fluxo de caixa e relatórios.",
+    icon: BarChart3,
+    tile: 2,
+    module: "Financeiro",
+    tab: 0,
+  },
+  {
+    title: "Automações com IA",
+    description: "Elimine tarefas repetitivas e ganhe tempo.",
+    icon: Sparkles,
+    tile: 3,
+    module: "Visão geral",
+    tab: 2,
+  },
+];
+const projects = [
+  {
+    name: "Delicius",
+    description: "Sistema de encomendas e produção.",
+    tags: ["Encomendas", "Produção", "Vendas"],
+    tile: 0,
+    detail:
+      "Gestão de encomendas, produção e vendas em uma operação organizada. A solução conecta os pedidos ao planejamento de produção e ao acompanhamento das entregas.",
+    experience: "Sistema de gestão",
+  },
+  {
+    name: "Material de Construção",
+    description: "Controle de produtos via NF-e com importação de itens.",
+    tags: ["Estoque", "Fiscal", "Relatórios"],
+    tile: 1,
+    detail:
+      "Gestão de produtos e estoque com importação de itens por NF-e, organização de informações fiscais e relatórios para acompanhar a operação.",
+    experience: "Sistema de gestão",
+  },
+  {
+    name: "SREB",
+    description: "Site institucional e presença digital.",
+    tags: ["Site", "SEO", "Performance"],
+    tile: 2,
+    detail:
+      "Experiência web institucional para apresentar a empresa, organizar seus conteúdos e fortalecer sua presença digital.",
+    experience: "Sistemas conectados",
+  },
+];
 const questions = [
   [
-    "Como saber qual solução minha empresa precisa?",
-    "O ponto de partida é o problema que você quer resolver. Um sistema pode organizar a gestão, uma automação pode conectar etapas e a IA pode apoiar sua equipe com informações. Avaliamos o contexto para propor uma solução ou uma combinação dessas frentes.",
+    "O sistema é realmente personalizado?",
+    "Sim. As funcionalidades, regras e integrações são planejadas a partir da operação da sua empresa e do escopo definido na proposta.",
   ],
   [
-    "A solução será desenvolvida para os meus processos?",
-    "Sim. O trabalho começa pelo entendimento da sua operação. As funcionalidades, regras e integrações são planejadas a partir das necessidades do negócio e do escopo definido na proposta.",
+    "Qual o prazo de desenvolvimento?",
+    "O prazo depende das funcionalidades, integrações e complexidade do projeto. Depois de entender seu desafio, apresentamos um planejamento com prioridades e entregas.",
   ],
   [
-    "Posso integrar as ferramentas que já utilizo?",
-    "Avaliamos as plataformas existentes e seus recursos de integração. APIs, permissões de acesso e regras do negócio determinam o que pode ser conectado com segurança.",
+    "Preciso de hospedagem ou instalação?",
+    "A estrutura necessária é definida para cada projeto. Aplicações web podem ser acessadas pelo navegador; infraestrutura, acesso e implantação são alinhados na proposta.",
   ],
   [
-    "Quanto custa e quanto tempo leva?",
-    "Investimento e prazo dependem do escopo, da complexidade e das integrações. Após entender seu desafio, a proposta detalha o que será desenvolvido, as prioridades e o planejamento das entregas.",
+    "Vocês oferecem suporte?",
+    "A implantação e os próximos passos da solução são planejados com você. O escopo de suporte e evolução é definido na contratação, conforme as necessidades do projeto.",
   ],
   [
-    "As demonstrações utilizam informações reais?",
-    "Não. Os dados de gestão são fictícios. Os exemplos de automação e IA são simulações predefinidas, sem chamadas a serviços externos. Eles mostram possibilidades e não executam ações na sua empresa.",
+    "É possível integrar com outros sistemas?",
+    "Sim, conforme os recursos, APIs e permissões das plataformas envolvidas. Avaliamos a viabilidade e as regras de integração antes de propor a solução.",
   ],
 ];
 
-function Brand({ inverse = false }: { inverse?: boolean }) {
-  return (
-    <a
-      href="#inicio"
-      aria-label="GoldSystem — início"
-      className={`business-brand ${inverse ? "inverse" : ""}`}
-    >
-      <span>&lt;</span>goldsystem<span>&gt;</span>
-    </a>
-  );
-}
-
-function OfferIllustration({ index }: { index: number }) {
-  if (index === 0)
-    return (
-      <div className="offer-illustration offer-system-art" aria-hidden="true">
-        <span className="offer-art-brand">&lt;goldsystem&gt;</span>
-        <div>
-          <span>
-            Pedidos <Check size={12} />
-          </span>
-          <span>
-            Estoque <Check size={12} />
-          </span>
-          <span>
-            Financeiro <Check size={12} />
-          </span>
-        </div>
-        <small>UMA VISÃO DA SUA OPERAÇÃO</small>
-      </div>
-    );
-  if (index === 1)
-    return (
-      <div className="offer-illustration offer-flow-art" aria-hidden="true">
-        <small>O PROCESSO SEGUE EM FRENTE</small>
-        <div>
-          <span>Entrada</span>
-          <ArrowRight size={16} />
-          <span>Regras</span>
-          <ArrowRight size={16} />
-          <span>
-            Ação <Check size={12} />
-          </span>
-        </div>
-        <p>Informação conectada. Próximo passo preparado.</p>
-      </div>
-    );
-  return (
-    <div className="offer-illustration offer-ai-art" aria-hidden="true">
-      <div>
-        <MessageSquareText size={15} />
-        <span>Uma informação chega.</span>
-      </div>
-      <div>
-        <Sparkles size={15} />
-        <span>Uma possibilidade é identificada.</span>
-      </div>
-      <small>CONTEXTO + INTELIGÊNCIA + REVISÃO HUMANA</small>
-    </div>
-  );
-}
-
 export function GoldSystem({ contactEnabled }: { contactEnabled: boolean }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [heroOffer, setHeroOffer] = useState(0);
-  const [labTab, setLabTab] = useState(0);
+  const [demoOpen, setDemoOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
+  const [tab, setTab] = useState(0);
+  const [demoModule, setDemoModule] = useState("Visão geral");
   const [context, setContext] = useState<BriefingContext>({});
-  const selectOffer = (index: number) =>
-    setContext((previous) => ({
-      ...previous,
-      experience: businessOffers[index].experience,
-    }));
-  const exploreOffer = (index: number) => {
-    setLabTab(index);
-    setHeroOffer(index);
+  const [projectIndex, setProjectIndex] = useState<number | null>(null);
+  const [projectCatalogOpen, setProjectCatalogOpen] = useState(false);
+  const [projectOffset, setProjectOffset] = useState(0);
+  const [clientOffset, setClientOffset] = useState(0);
+  const openContact = (experience?: string) => {
+    setDemoOpen(false);
+    setProjectIndex(null);
+    setProjectCatalogOpen(false);
+    if (experience) setContext((previous) => ({ ...previous, experience }));
+    setContactOpen(true);
   };
+  const openDemo = (nextTab = 0, module = "Visão geral") => {
+    setDemoModule(module);
+    setTab(nextTab);
+    setDemoOpen(true);
+  };
+  useEffect(() => {
+    const syncHash = () => {
+      if (location.hash === "#contato") setContactOpen(true);
+      if (location.hash === "#experiencias") setDemoOpen(true);
+    };
+    const timer = setTimeout(syncHash, 0);
+    window.addEventListener("hashchange", syncHash);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("hashchange", syncHash);
+    };
+  }, []);
+  const currentProject = projectIndex === null ? null : projects[projectIndex];
   return (
-    <div className="business-site">
+    <div className="reference-site">
       <a className="skip-link" href="#conteudo">
         Pular para o conteúdo
       </a>
-      <div className="business-utility">
-        <div className="business-wrap">
-          <span>Tecnologia sob medida para a sua operação.</span>
-          <span>
-            Sistemas <i /> Automações <i /> Inteligência Artificial
-          </span>
-        </div>
-      </div>
-      <header
-        className="business-header"
-        onKeyDown={(event) => {
-          if (event.key === "Escape" && menuOpen) {
-            setMenuOpen(false);
-            document.getElementById("menu-toggle")?.focus();
-          }
-        }}
-      >
-        <div className="business-wrap business-header-inner">
-          <div className="business-brand-lockup">
-            <Brand />
-            <span>SISTEMAS. AUTOMAÇÃO. INTELIGÊNCIA.</span>
-          </div>
-          <nav
-            id="main-navigation"
-            aria-label="Navegação principal"
-            className={menuOpen ? "is-open" : ""}
-          >
-            {[
-              ["Soluções", "solucoes"],
-              ["Experiências", "experiencias"],
-              ["Como funciona", "processo"],
-            ].map(([label, id]) => (
-              <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>
-                {label}
-              </a>
-            ))}
-            <a
-              className="business-mobile-contact"
-              href="#contato"
-              onClick={() => setMenuOpen(false)}
-            >
-              Conversar sobre meu projeto <ArrowUpRight size={17} />
-            </a>
-          </nav>
-          <a className="business-header-cta" href="#contato">
-            Vamos conversar <ArrowUpRight size={16} />
-          </a>
-          <button
-            id="menu-toggle"
-            className="icon-button business-menu-toggle"
-            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={menuOpen}
-            aria-controls="main-navigation"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? <X size={23} /> : <Menu size={23} />}
-          </button>
-        </div>
-      </header>
+      <ReferenceHeader />
       <main id="conteudo">
-        <section className="business-hero" id="inicio">
-          <div className="business-wrap business-hero-grid">
-            <div className="business-hero-copy">
-              <span className="business-eyebrow">
-                <span /> TECNOLOGIA QUE TRABALHA COM O SEU NEGÓCIO
+        <section className="ref-hero" id="inicio">
+          <div className="ref-container ref-hero-inner">
+            <div className="ref-hero-copy">
+              <span className="ref-eyebrow light">
+                SISTEMAS · AUTOMAÇÕES · INTELIGÊNCIA ARTIFICIAL
               </span>
               <h1>
-                Sistemas, automações e IA{" "}
-                <span>feitos para a sua empresa.</span>
+                Tecnologia
+                <br />
+                que transforma
+                <br />
+                negócios <span>reais.</span>
               </h1>
               <p>
-                A GoldSystem desenvolve soluções para organizar sua gestão,
-                conectar processos e apoiar sua equipe com inteligência. Da
-                necessidade do seu negócio a uma ferramenta que faz sentido na
-                operação.
+                Desenvolvemos sistemas personalizados e automações com
+                Inteligência Artificial para empresas que querem mais
+                eficiência, controle e crescimento.
               </p>
-              <div className="business-hero-actions">
-                <a
-                  className="business-button primary"
-                  href="#contato"
-                  onClick={() => selectOffer(heroOffer)}
+              <div className="ref-hero-actions">
+                <button
+                  className="ref-button cyan"
+                  onClick={() => openContact("Sistema de gestão")}
                 >
-                  Conversar sobre meu projeto <ArrowUpRight size={18} />
-                </a>
-                <a
-                  className="business-hero-explore"
-                  href="#experiencias"
-                  onClick={() => exploreOffer(heroOffer)}
+                  Quero um sistema personalizado <ArrowRight size={17} />
+                </button>
+                <button
+                  className="ref-button outline play-button"
+                  onClick={() => openDemo()}
                 >
-                  Ver na prática{" "}
                   <span>
-                    <ArrowDown size={17} />
+                    <Play size={14} fill="currentColor" />
                   </span>
-                </a>
+                  Ver como funciona
+                </button>
               </div>
-              <div className="business-hero-assurance">
-                <span>
-                  <Check size={15} /> Soluções sob medida
-                </span>
-                <span>
-                  <Check size={15} /> Processos conectados
-                </span>
-              </div>
-            </div>
-            <ProductPreview
-              selected={heroOffer}
-              onSelect={setHeroOffer}
-              onExplore={exploreOffer}
-            />
-          </div>
-          <div className="business-wrap business-benefit-strip">
-            <div>
-              <ClipboardList size={22} />
-              <span>
-                <strong>Organize sua gestão.</strong>Informações e processos no
-                lugar certo.
-              </span>
-            </div>
-            <div>
-              <Workflow size={22} />
-              <span>
-                <strong>Agilize sua operação.</strong>Menos etapas manuais no
-                dia a dia.
-              </span>
-            </div>
-            <div>
-              <Sparkles size={22} />
-              <span>
-                <strong>Apoie sua equipe.</strong>IA aplicada a desafios do
-                negócio.
-              </span>
-            </div>
-          </div>
-        </section>
-        <section className="business-problems business-wrap" id="desafios">
-          <div className="business-section-heading" data-reveal>
-            <div>
-              <span className="business-eyebrow">
-                O DESAFIO É DO SEU NEGÓCIO. A SOLUÇÃO TAMBÉM.
-              </span>
-              <h2>
-                Quando a operação cresce,
-                <br />
-                <span>os processos precisam acompanhar.</span>
-              </h2>
-            </div>
-            <p>
-              Sua equipe conhece a rotina. A tecnologia deve ajudar a fazê-la
-              funcionar melhor.
-            </p>
-          </div>
-          <div className="business-problem-grid">
-            {[
-              [
-                "Informações espalhadas?",
-                "Centralize o que sua empresa precisa para acompanhar pedidos, clientes e resultados.",
-                "Sistemas que organizam",
-                ClipboardList,
-              ],
-              [
-                "As mesmas tarefas, todos os dias?",
-                "Conecte etapas e ferramentas para reduzir o trabalho repetitivo da sua equipe.",
-                "Automações que agilizam",
-                Workflow,
-              ],
-              [
-                "Muitos dados, pouca clareza?",
-                "Use IA para interpretar informações e preparar próximos passos com revisão humana.",
-                "Inteligência que apoia",
-                Sparkles,
-              ],
-            ].map(([title, text, label, Icon], index) => {
-              const Symbol = Icon as typeof ClipboardList;
-              return (
-                <a
-                  href="#solucoes"
-                  onClick={() => setHeroOffer(index)}
-                  key={String(title)}
-                >
-                  <span className="business-problem-number">0{index + 1}</span>
-                  <h3>{String(title)}</h3>
-                  <p>{String(text)}</p>
-                  <span className="business-problem-answer">
-                    <Symbol size={16} />
-                    {String(label)}
-                    <ArrowUpRight size={15} />
-                  </span>
-                </a>
-              );
-            })}
-          </div>
-        </section>
-        <section className="business-solutions" id="solucoes">
-          <div className="business-wrap">
-            <div className="business-section-heading" data-reveal>
-              <div>
-                <span className="business-eyebrow">
-                  O QUE A GOLDSYSTEM DESENVOLVE
-                </span>
-                <h2>
-                  Três frentes de tecnologia.
-                  <br />
-                  <span>Uma solução para a sua operação.</span>
-                </h2>
-              </div>
-              <p>
-                Você traz o desafio. Nós planejamos a tecnologia para
-                resolvê-lo.
-              </p>
-            </div>
-            <div className="business-offers-grid">
-              {businessOffers.map((offer, index) => (
-                <article
-                  key={offer.name}
-                  className={`business-offer offer-${index}`}
-                >
-                  <div className="business-offer-top">
-                    <span>
-                      <offer.icon size={20} />
-                    </span>
-                    <small>0{index + 1}</small>
-                  </div>
-                  <h3>{offer.name}</h3>
-                  <p className="business-offer-benefit">{offer.benefit}</p>
-                  <p>{offer.description}</p>
-                  <OfferIllustration index={index} />
-                  <ul>
-                    {offer.examples.map((example) => (
-                      <li key={example}>
-                        <Check size={14} />
-                        {example}
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    className="business-offer-cta"
-                    href="#contato"
-                    onClick={() => selectOffer(index)}
-                  >
-                    {offer.action}
-                    <ArrowUpRight size={17} />
-                  </a>
-                  <a
-                    className="business-offer-demo"
-                    href="#experiencias"
-                    onClick={() => exploreOffer(index)}
-                  >
-                    Ver demonstração <ArrowRight size={14} />
-                  </a>
-                </article>
-              ))}
-            </div>
-            <div className="business-integration">
-              <span className="business-integration-symbol">
-                <Plug size={25} />
-              </span>
-              <div>
-                <h3>
-                  As ferramentas que você já usa também entram na conversa.
-                </h3>
+              <div className="ref-social-proof">
+                <div aria-hidden="true">
+                  {["D", "S", "G", "M"].map((letter) => (
+                    <span key={letter}>{letter}</span>
+                  ))}
+                </div>
                 <p>
-                  Avaliamos integrações com seus sistemas e plataformas,
-                  conforme os recursos e APIs disponíveis.
+                  <strong>+30 empresas</strong>
+                  <br />
+                  já confiam na GoldSystem
                 </p>
               </div>
-              <a
-                href="#contato"
+            </div>
+            <div className="ref-hero-overlays">
+              <div className="ref-assistant">
+                <span>
+                  <Sparkles size={18} />
+                  Assistente com IA
+                </span>
+                <button onClick={() => openDemo(2)}>
+                  <Sparkles size={12} />
+                  Analisar informações do negócio
+                </button>
+                <button onClick={() => openDemo(1)}>
+                  <Workflow size={12} />
+                  Automatizar um processo
+                </button>
+                <button onClick={() => openDemo(0)}>
+                  <ClipboardList size={12} />
+                  Organizar pedidos e gestão
+                </button>
+              </div>
+              <div className="ref-productivity">
+                <strong>+32%</strong>
+                <span>mais produtividade</span>
+                <div aria-hidden="true">
+                  {[18, 28, 23, 37, 42, 38, 57, 74, 91].map((height, index) => (
+                    <i key={index} style={{ height: height + "%" }} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <span className="ref-hero-image-note">
+            Visual ilustrativo de sistema.
+          </span>
+        </section>
+        <section
+          className="ref-clients"
+          aria-label="Empresas que confiam na GoldSystem"
+        >
+          <div className="ref-container">
+            <div className="ref-client-list">
+              {commercial.clients.map((_, index) => {
+                const name =
+                  commercial.clients[
+                    (index + clientOffset) % commercial.clients.length
+                  ];
+                const Icon = [BadgeCheck, Workflow, Layers3, Box][
+                  (index + clientOffset) % commercial.clients.length
+                ];
+                return (
+                  <span key={name}>
+                    <Icon size={28} />
+                    <strong>{name}</strong>
+                  </span>
+                );
+              })}
+            </div>
+            <div className="ref-clients-more">
+              <span>
+                <strong>Empresas de</strong>
+                <br />
+                diversos setores.
+              </span>
+              <button
+                aria-label="Empresas anteriores"
                 onClick={() =>
-                  setContext((previous) => ({
-                    ...previous,
-                    experience: "Sistemas conectados",
-                  }))
+                  setClientOffset(
+                    (value) =>
+                      (value + commercial.clients.length - 1) %
+                      commercial.clients.length,
+                  )
                 }
               >
-                Quero conectar meus sistemas <ArrowUpRight size={17} />
-              </a>
+                <ArrowLeft size={14} />
+              </button>
+              <button
+                aria-label="Próximas empresas"
+                onClick={() =>
+                  setClientOffset(
+                    (value) => (value + 1) % commercial.clients.length,
+                  )
+                }
+              >
+                <ArrowRight size={14} />
+              </button>
             </div>
           </div>
         </section>
-        <Laboratory
-          tab={labTab}
-          setTab={setLabTab}
-          onConvert={(experience) =>
-            setContext((previous) => ({ ...previous, experience }))
-          }
-        />
-        <section className="business-process" id="processo">
-          <div className="business-wrap">
-            <div className="business-section-heading" data-reveal>
-              <div>
-                <span className="business-eyebrow">
-                  CLAREZA DO PRIMEIRO CONTATO À ENTREGA
-                </span>
-                <h2>
-                  Você conhece seu negócio.
-                  <br />
-                  <span>Nós construímos a tecnologia com você.</span>
-                </h2>
-              </div>
+        <section className="ref-solutions" id="solucoes">
+          <div className="ref-container ref-solutions-grid">
+            <div className="ref-section-intro" data-reveal>
+              <span className="ref-eyebrow">SOLUÇÕES SOB MEDIDA</span>
+              <h2>
+                Sistemas completos para cada etapa <span>do seu negócio.</span>
+              </h2>
               <p>
-                Um processo definido para transformar a necessidade em uma
-                solução utilizável.
+                Do atendimento ao financeiro, tudo integrado em um único
+                sistema, desenvolvido para a sua realidade.
               </p>
+              <button className="ref-button dark" onClick={() => openDemo()}>
+                Conheça todas as soluções <ArrowRight size={16} />
+              </button>
             </div>
-            <div className="business-process-track">
-              <span />
-            </div>
-            <div className="business-process-steps">
-              {[
-                [
-                  "Entendemos seu desafio",
-                  "Conhecemos a operação, os processos e o que precisa funcionar melhor.",
-                ],
-                [
-                  "Planejamos a solução",
-                  "Definimos funcionalidades, integrações, prioridades e escopo da proposta.",
-                ],
-                [
-                  "Desenvolvemos e validamos",
-                  "Construímos a solução e validamos seu funcionamento ao longo do projeto.",
-                ],
-                [
-                  "Implantamos e evoluímos",
-                  "Acompanhamos a implantação e planejamos os próximos passos da solução.",
-                ],
-              ].map(([title, text], index) => (
-                <article key={title} data-reveal>
-                  <span>0{index + 1}</span>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-        <Studies />
-        <Simulator
-          onConvert={(simulation) =>
-            setContext((previous) => ({ ...previous, simulation }))
-          }
-        />
-        <Comparison />
-        <section className="business-faq business-wrap" id="perguntas">
-          <div>
-            <span className="business-eyebrow">PARA DECIDIR COM CLAREZA</span>
-            <h2>
-              Antes de começar,
-              <br />
-              <span>vamos tirar suas dúvidas.</span>
-            </h2>
-            <p>
-              Cada projeto começa com entendimento e uma proposta alinhada ao
-              seu contexto.
-            </p>
-          </div>
-          <div>
-            {questions.map(([question, answer]) => (
-              <details key={question}>
-                <summary>
-                  {question}
-                  <ChevronDown size={19} />
-                </summary>
-                <p>{answer}</p>
-              </details>
+            {solutions.map((solution) => (
+              <button
+                className="ref-solution-card"
+                key={solution.title}
+                onClick={() => openDemo(solution.tab, solution.module)}
+                aria-label={`Conhecer ${solution.title}`}
+              >
+                <div
+                  className={`ref-atlas services tile-${solution.tile}`}
+                  role="img"
+                  aria-label={`Imagem ilustrativa de ${solution.title}`}
+                />
+                <div>
+                  <span className="ref-card-icon">
+                    <solution.icon size={19} />
+                  </span>
+                  <h3>{solution.title}</h3>
+                  <p>{solution.description}</p>
+                  <ArrowRight size={16} />
+                </div>
+              </button>
             ))}
           </div>
         </section>
-        <section className="business-final">
-          <div className="business-wrap">
-            <div>
-              <span className="business-eyebrow">
-                O PRÓXIMO PASSO COMEÇA COM O SEU DESAFIO
+        <Simulator
+          onConvert={(simulation) => {
+            setContext((previous) => ({ ...previous, simulation }));
+            openContact("Automação de processos");
+          }}
+        />
+        <section className="ref-projects" id="projetos">
+          <div className="ref-container">
+            <div className="ref-project-controls">
+              <button
+                aria-label="Projetos anteriores"
+                onClick={() =>
+                  setProjectOffset(
+                    (value) => (value + projects.length - 1) % projects.length,
+                  )
+                }
+              >
+                <ArrowLeft size={17} />
+              </button>
+              <button
+                aria-label="Próximos projetos"
+                onClick={() =>
+                  setProjectOffset((value) => (value + 1) % projects.length)
+                }
+              >
+                <ArrowRight size={17} />
+              </button>
+            </div>
+            <div className="ref-projects-grid">
+              <div className="ref-section-intro" data-reveal>
+                <span className="ref-eyebrow">PROJETOS REAIS</span>
+                <h2>
+                  Soluções que geram <span>resultados de verdade.</span>
+                </h2>
+                <p>
+                  Cada projeto é único, desenvolvido para a realidade e os
+                  objetivos de cada cliente.
+                </p>
+                <button
+                  className="ref-button dark"
+                  onClick={() => {
+                    setProjectIndex(null);
+                    setProjectCatalogOpen(true);
+                  }}
+                >
+                  Ver todos os projetos <ArrowRight size={16} />
+                </button>
+              </div>
+              {projects.map((_, index) => {
+                const projectId = (index + projectOffset) % projects.length;
+                const project = projects[projectId];
+                return (
+                  <button
+                    className="ref-project-card"
+                    key={project.name}
+                    onClick={() => setProjectIndex(projectId)}
+                    aria-label={`Ver projeto ${project.name}`}
+                  >
+                    <div
+                      className={`ref-atlas editorial tile-${project.tile}`}
+                    />
+                    <div>
+                      <h3>{project.name}</h3>
+                      <p>{project.description}</p>
+                      <div>
+                        {project.tags.map((tag) => (
+                          <span key={tag}>{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+            <p className="ref-project-image-note">
+              Imagens ilustrativas dos projetos.
+            </p>
+          </div>
+        </section>
+        <section className="ref-why" id="como-funciona">
+          <div className="ref-container ref-why-grid">
+            <div className="ref-section-intro" data-reveal>
+              <span className="ref-eyebrow light">
+                POR QUE ESCOLHER A GOLDSYSTEM
               </span>
               <h2>
-                O que pode funcionar melhor
+                Mais que sistemas.
                 <br />
-                na sua empresa?
+                <span>Parceria para o seu crescimento.</span>
               </h2>
-              <p>
-                Um sistema mais adequado. Um processo mais ágil.
-                <br />
-                Uma aplicação de IA com propósito. Vamos entender juntos.
-              </p>
-              <a className="business-button light" href="#contato">
-                Vamos conversar sobre sua solução <ArrowUpRight size={19} />
+              <a
+                className="ref-button outline"
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Falar com um especialista <ArrowRight size={16} />
               </a>
             </div>
-            <div className="business-final-offers">
-              {businessOffers.map((offer, index) => (
-                <a
-                  href="#contato"
-                  key={offer.name}
-                  onClick={() => selectOffer(index)}
-                >
+            <div className="ref-benefits">
+              {[
+                {
+                  title: "Atendimento consultivo",
+                  text: "Entendemos o seu negócio antes de propor soluções.",
+                  icon: Headset,
+                },
+                {
+                  title: "Soluções personalizadas",
+                  text: "Tecnologia construída para os processos da sua empresa.",
+                  icon: Puzzle,
+                },
+                {
+                  title: "Foco em resultados",
+                  text: "Tecnologia que faz a diferença no dia a dia da operação.",
+                  icon: BarChart3,
+                },
+                {
+                  title: "Implantação acompanhada",
+                  text: "Planejamento e proximidade em cada etapa do projeto.",
+                  icon: ShieldCheck,
+                },
+              ].map(({ title, text, icon: Icon }) => (
+                <div key={title}>
                   <span>
-                    <offer.icon size={21} />
+                    <Icon size={26} />
                   </span>
                   <div>
-                    <strong>{offer.name}</strong>
-                    <small>{offer.benefit}</small>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
                   </div>
-                  <ArrowUpRight size={19} />
-                </a>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="ref-container ref-process-line">
+            <span>COMO TRABALHAMOS</span>
+            {["Entendemos", "Planejamos", "Desenvolvemos", "Implantamos"].map(
+              (step, index) => (
+                <span key={step}>
+                  <i>0{index + 1}</i>
+                  {step}
+                  {index < 3 && <ArrowRight size={13} />}
+                </span>
+              ),
+            )}
+          </div>
+        </section>
+        <section className="ref-proof" id="sobre">
+          <div className="ref-testimonial">
+            <div>
+              <Quote size={30} />
+              <blockquote>“{commercial.testimonial.quote}”</blockquote>
+              <div>
+                <span>M</span>
+                <div>
+                  <strong>{commercial.testimonial.name}</strong>
+                  <small>{commercial.testimonial.company}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="ref-stats">
+            <div>
+              {commercial.indicators.map((indicator) => (
+                <div key={indicator.label}>
+                  <strong>{indicator.value}</strong>
+                  <span>{indicator.label}</span>
+                </div>
               ))}
             </div>
           </div>
         </section>
+        <section className="ref-faq">
+          <div className="ref-container ref-faq-grid">
+            <div className="ref-section-intro" data-reveal>
+              <span className="ref-eyebrow">DÚVIDAS FREQUENTES</span>
+              <h2>Tire suas dúvidas.</h2>
+              <p>
+                Reunimos as principais perguntas para ajudar você a entender
+                como funciona o nosso trabalho.
+              </p>
+              <a
+                className="ref-button dark"
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Falar com um especialista <ArrowRight size={15} />
+              </a>
+            </div>
+            <div className="ref-faq-list">
+              {questions.map(([question, answer]) => (
+                <details key={question}>
+                  <summary>
+                    {question}
+                    <ChevronDown size={16} />
+                  </summary>
+                  <p>{answer}</p>
+                </details>
+              ))}
+            </div>
+            <div className="ref-expert-card">
+              <div className="ref-atlas editorial tile-3" aria-hidden="true" />
+              <div>
+                <h3>
+                  Prefere conversar
+                  <br />
+                  com um especialista?
+                </h3>
+                <p>Tire suas dúvidas e receba uma proposta personalizada.</p>
+                <a
+                  className="ref-button cyan"
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Chamar no WhatsApp <ArrowRight size={15} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <ReferenceFooter
+        onOpenContact={() => openContact()}
+        onExplore={(index) => openDemo(index)}
+      />
+      <SiteDialog
+        open={demoOpen}
+        onClose={() => setDemoOpen(false)}
+        title="Conheça as soluções na prática"
+        id="demo"
+        className="ref-demo-dialog"
+      >
+        <Laboratory
+          tab={tab}
+          setTab={setTab}
+          initialModule={demoModule}
+          onConvert={(experience) => openContact(experience)}
+        />
+        <Comparison />
+      </SiteDialog>
+      <SiteDialog
+        open={contactOpen}
+        onClose={() => setContactOpen(false)}
+        title="Vamos conversar sobre seu projeto"
+        id="briefing"
+        className="ref-contact-dialog"
+      >
         <Contact
           enabled={contactEnabled}
           context={context}
           onClear={() => setContext({})}
         />
-      </main>
-      <footer className="business-footer">
-        <div className="business-wrap">
-          <div className="business-footer-top">
-            <div>
-              <Brand />
-              <p>
-                Sistemas, automações e Inteligência Artificial.
-                <br />
-                Tecnologia sob medida para a sua empresa.
-              </p>
-            </div>
-            <div className="business-footer-links">
-              <span>NOSSAS SOLUÇÕES</span>
-              {businessOffers.map((offer, index) => (
-                <a
-                  key={offer.name}
-                  href="#experiencias"
-                  onClick={() => exploreOffer(index)}
-                >
-                  {offer.name}
-                </a>
+      </SiteDialog>
+      <SiteDialog
+        open={currentProject !== null || projectCatalogOpen}
+        onClose={() => {
+          setProjectIndex(null);
+          setProjectCatalogOpen(false);
+        }}
+        title={
+          projectCatalogOpen
+            ? "Projetos da GoldSystem"
+            : currentProject?.name || "Conheça o projeto"
+        }
+        id="case"
+        className="ref-case-dialog"
+      >
+        {projectCatalogOpen && (
+          <div className="ref-project-catalog">
+            {projects.map((project, index) => (
+              <button
+                type="button"
+                className="ref-project-card"
+                key={project.name}
+                onClick={() => {
+                  setProjectCatalogOpen(false);
+                  setProjectIndex(index);
+                }}
+              >
+                <div className={`ref-atlas editorial tile-${project.tile}`} />
+                <div>
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
+                  <span className="ref-catalog-link">
+                    Conhecer projeto <ArrowRight size={15} />
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+        {currentProject && (
+          <div className="ref-case-detail">
+            <button
+              className="ref-case-back"
+              onClick={() => {
+                setProjectIndex(null);
+                setProjectCatalogOpen(true);
+              }}
+            >
+              <ArrowLeft size={15} /> Todos os projetos
+            </button>
+            <div
+              className={`ref-atlas editorial tile-${currentProject.tile}`}
+            />
+            <span className="ref-eyebrow">PROJETO GOLDSYSTEM</span>
+            <h3>{currentProject.name}</h3>
+            <p>{currentProject.detail}</p>
+            <ul>
+              {currentProject.tags.map((tag) => (
+                <li key={tag}>
+                  <Check size={16} />
+                  {tag}
+                </li>
               ))}
-            </div>
-            <div className="business-footer-links">
-              <span>GOLDSYSTEM</span>
-              <a href="#processo">Como funciona</a>
-              <a href="#experiencias">Experiências</a>
-              <a href="#contato">Seu projeto</a>
-            </div>
-          </div>
-          <details className="business-privacy" id="privacidade">
-            <summary>
-              Privacidade e seus dados <ChevronDown size={14} />
-            </summary>
-            <p>
-              Este site não utiliza rastreamento ou cookies de marketing. As
-              demonstrações usam dados fictícios mantidos na memória da página.
-              Os campos do formulário ficam no seu navegador até uma ação de
-              envio. Copiar ou baixar o briefing não encaminha os dados à
-              GoldSystem. Quando uma integração estiver configurada, os dados
-              informados e o contexto selecionado serão encaminhados ao backend
-              mediante seu consentimento. A retenção dos dados e o canal para
-              exercer seus direitos devem ser definidos antes de ativar o envio
-              público.
+            </ul>
+            <p className="ref-project-image-note">
+              Imagem ilustrativa da aplicação.
             </p>
-          </details>
-          <div className="business-footer-bottom">
-            <span>
-              © {new Date().getFullYear()} GoldSystem. Todos os direitos
-              reservados.
-            </span>
-            <span>Desenvolvido para o seu negócio.</span>
-            <a href="#inicio">
-              Voltar ao início <ArrowUpRight size={14} />
-            </a>
+            <button
+              className="ref-button cyan"
+              onClick={() => openContact(currentProject.experience)}
+            >
+              Quero algo assim no meu negócio <ArrowUpRight size={16} />
+            </button>
           </div>
-        </div>
-      </footer>
+        )}
+      </SiteDialog>
       <MotionSystem />
     </div>
   );

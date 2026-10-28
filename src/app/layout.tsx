@@ -1,17 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/geist";
 import "./globals.css";
-import "./business.css";
+import "./reference.css";
 
 export const metadata: Metadata = {
-  title: "GoldSystem — Sistemas, automações e IA para sua empresa",
+  title: "GoldSystem — Tecnologia que transforma negócios reais",
   description:
     "A GoldSystem desenvolve sistemas personalizados, automações de processos e soluções com Inteligência Artificial para organizar e conectar a operação da sua empresa.",
   ...(process.env.NEXT_PUBLIC_SITE_URL
     ? { metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL) }
     : {}),
   openGraph: {
-    title: "GoldSystem — Tecnologia sob medida para sua empresa",
+    title: "GoldSystem — Tecnologia que transforma negócios reais",
     description:
       "Sistemas que organizam, automações que agilizam e IA que apoia sua equipe. Conheça as três frentes da GoldSystem.",
     locale: "pt_BR",
