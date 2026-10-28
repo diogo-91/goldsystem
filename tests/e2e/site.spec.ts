@@ -332,35 +332,6 @@ test("teclado, estudos demonstrativos e movimento reduzido", async ({
   ).toBe("auto");
 });
 
-// Chromium's software compositor can omit live WebGL surfaces in tall captures.
-// Freeze the actual rendered buffers only for screenshots; interaction tests use
-// the live canvases. Nothing in the application is replaced or mocked for users.
-async function freezeRenderedFrames(page: Page) {
-  await page.evaluate(async () => {
-    for (const canvas of document.querySelectorAll<HTMLCanvasElement>(".sculpture.is-ready canvas")) {
-      const frame = document.createElement("img");
-      frame.src = canvas.toDataURL();
-      await frame.decode();
-      frame.alt = "";
-      frame.className = "capture-webgl-frame";
-      frame.style.cssText = "position:absolute;inset:0;width:100%;height:100%;pointer-events:none;";
-      canvas.after(frame);
-      canvas.dataset.captureVisibility = canvas.style.visibility;
-      canvas.style.visibility = "hidden";
-    }
-  });
-}
-
-async function restoreRenderedFrames(page: Page) {
-  await page.evaluate(() => {
-    document.querySelectorAll<HTMLCanvasElement>("canvas[data-capture-visibility]").forEach(canvas => {
-      canvas.style.visibility = canvas.dataset.captureVisibility || "";
-      delete canvas.dataset.captureVisibility;
-    });
-    document.querySelectorAll(".capture-webgl-frame").forEach(frame => frame.remove());
-  });
-}
-
 for (const width of [1440, 1280, 768, 390]) {
   test(`layout ${width}px: página completa, sem overflow ou erros de execução`, async ({
     page,
@@ -374,7 +345,7 @@ for (const width of [1440, 1280, 768, 390]) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "O futuro da",
+      "Sistemas, automações e IA",
     );
     await page.evaluate(async () => {
       await document.fonts.ready;
@@ -390,7 +361,6 @@ for (const width of [1440, 1280, 768, 390]) {
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
-    await freezeRenderedFrames(page);
     await page.screenshot({
       path: testInfo.outputPath(`goldsystem-${width}.png`),
       fullPage: true,
@@ -401,7 +371,6 @@ for (const width of [1440, 1280, 768, 390]) {
       path: testInfo.outputPath(`hero-${width}.png`),
       animations: "disabled",
     });
-    await restoreRenderedFrames(page);
     if (width === 390) {
       await page.getByRole("button", { name: "Abrir menu" }).click();
       await page
@@ -416,57 +385,67 @@ for (const width of [1440, 1280, 768, 390]) {
   });
 }
 
-test("WebGL indisponível mantém a escultura vetorial sem erros de execução", async ({
-  page,
-}, testInfo) => {
-  await page.addInitScript(() => {
-    const original = HTMLCanvasElement.prototype.getContext;
-    HTMLCanvasElement.prototype.getContext = function (
-      this: HTMLCanvasElement,
-      ...args: Parameters<typeof original>
-    ) {
-      if (String(args[0]).startsWith("webgl")) return null;
-      return original.apply(this, args);
-    } as typeof original;
-  });
-  const errors: string[] = [];
-  page.on("pageerror", (error) => errors.push(error.message));
-  page.on("console", (message) => {
-    if (message.type() === "error") errors.push(message.text());
-  });
-  await page.goto("/");
-  await page.waitForTimeout(1500);
-  await expect(page.locator(".sculpture").first()).not.toHaveClass(/is-ready/);
-  await expect(page.locator(".sculpture-poster").first()).toHaveCSS(
-    "opacity",
-    "1",
-  );
-  await page.screenshot({ path: testInfo.outputPath("fallback-vetorial.png") });
-  expect(errors).toEqual([]);
-});
-
-test("movimento padrão: escultura e narrativa respondem à rolagem", async ({
+test("as três ofertas apresentam produtos e levam à demonstração correta", async ({
   page,
 }) => {
-  await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
-  await expect(page.locator(".hero .sculpture")).toHaveClass(/is-ready/, {
-    timeout: 20000,
+  const choices = page.getByRole("group", {
+    name: "Conheça as soluções GoldSystem",
   });
-  const fragment = page.locator(".piece-orders");
-  const before = await fragment.evaluate(
-    (element) => getComputedStyle(element).transform,
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Sistemas, automações e IA",
   );
-  await page.locator(".transformation-result").scrollIntoViewIfNeeded();
-  await page.waitForTimeout(1200);
-  const after = await fragment.evaluate(
-    (element) => getComputedStyle(element).transform,
+  await expect(choices.getByRole("button")).toHaveCount(3);
+  await page
+    .getByRole("complementary", { name: "Módulos da prévia do sistema" })
+    .getByRole("button", { name: "Estoque", exact: true })
+    .click();
+  await expect(page.getByTestId("hero-product-preview")).toContainText(
+    "Seu estoque, à vista.",
   );
-  expect(after).not.toBe(before);
-  await expect(page.locator(".network-line").first()).toHaveCSS(
-    "stroke-dashoffset",
-    "0px",
+  await choices
+    .getByRole("button", { name: "Automações", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "Simular fluxo", exact: true })
+    .click();
+  await expect(page.locator(".sales-flow-footer")).toContainText(
+    "Simulação concluída",
   );
+  await expect(page.locator(".sales-flow > .executed")).toHaveCount(4);
+  await page.locator(".sales-preview-cta").click();
+  await expect(
+    page.getByRole("tab", { name: /Automação de processos/ }),
+  ).toHaveAttribute("aria-selected", "true");
+  await choices
+    .getByRole("button", { name: "Inteligência Artificial", exact: true })
+    .click();
+  await page
+    .getByRole("group", { name: "Exemplos de aplicação de IA" })
+    .getByRole("button", { name: "Financeiro", exact: true })
+    .click();
+  await expect(page.locator(".sales-ai-output")).toContainText("R$ 3.240");
+  await page.locator(".sales-preview-cta").click();
+  await expect(
+    page.getByRole("tab", { name: /Inteligência Artificial/ }),
+  ).toHaveAttribute("aria-selected", "true");
+});
+
+test("cada oferta comercial preserva a solução no formulário de proposta", async ({
+  page,
+}) => {
+  await page.goto("/");
+  for (const [action, solution] of [
+    ["Quero desenvolver meu sistema", "Software sob medida"],
+    ["Quero automatizar minha operação", "Automação inteligente"],
+    ["Quero aplicar IA na minha empresa", "Inteligência Artificial"],
+  ]) {
+    await page.getByRole("link", { name: action, exact: true }).click();
+    await expect(page.getByLabel("O que você tem em mente?")).toHaveValue(
+      solution,
+    );
+    await expect(page.locator(".briefing-context")).toBeVisible();
+  }
 });
 
 test("acessibilidade: sem violações sérias ou críticas nos estados principais", async ({
@@ -509,6 +488,15 @@ test("acessibilidade: sem violações sérias ou críticas nos estados principai
           })),
         }));
     });
+  expect(await check()).toEqual([]);
+  const offers = page.getByRole("group", {
+    name: "Conheça as soluções GoldSystem",
+  });
+  await offers.getByRole("button", { name: "Automações", exact: true }).click();
+  expect(await check()).toEqual([]);
+  await offers
+    .getByRole("button", { name: "Inteligência Artificial", exact: true })
+    .click();
   expect(await check()).toEqual([]);
   await page.getByRole("tab", { name: /Automação de processos/ }).click();
   expect(await check()).toEqual([]);

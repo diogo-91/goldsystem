@@ -1,0 +1,4642 @@
+.business-site {
+  --business-muted: #526781;
+  background: #fff;
+  color: var(--navy);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.business-wrap {
+  width: min(1280px, calc(100% - 64px));
+  margin-inline: auto;
+}
+.business-site .section-pad {
+  max-width: none;
+  padding-inline: max(32px, calc((100vw - 1280px) / 2));
+}
+.business-utility {
+  background: #071b36;
+  color: #d9e6f7;
+  font-size: 11px;
+}
+.business-utility > .business-wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 9px;
+}
+.business-utility .business-wrap > span:last-child {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #bdcfe7;
+}
+.business-utility i {
+  width: 3px;
+  height: 3px;
+  background: #75a7f3;
+  border-radius: 50%;
+}
+.business-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: #fffffffa;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #e0e8f2;
+}
+.business-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  min-height: 90px;
+}
+.business-brand-lockup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.business-brand {
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -1.8px;
+  line-height: 1.2;
+  display: inline-block;
+  white-space: nowrap;
+}
+.business-brand > span {
+  font-weight: 450;
+  color: #2563eb;
+}
+.business-brand-lockup > span {
+  font-size: 7px;
+  letter-spacing: 1.4px;
+  color: #596c85;
+  margin-left: 1px;
+}
+.business-header nav {
+  display: flex;
+  gap: 29px;
+  margin-left: auto;
+  align-items: center;
+}
+.business-header nav > a {
+  font-size: 13px;
+  font-weight: 500;
+  color: #52647e;
+}
+.business-header nav > a:hover {
+  color: #2563eb;
+}
+.business-header-cta {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: #071b36;
+  color: white;
+  font-size: 12px;
+  font-weight: 550;
+  padding: 12px 18px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.business-header-cta:hover {
+  background: #174179;
+}
+.business-mobile-contact,
+.business-menu-toggle {
+  display: none !important;
+}
+.business-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.05px;
+  line-height: 1.7;
+  color: #3467ac;
+}
+.business-eyebrow > span {
+  width: 6px;
+  height: 6px;
+  background: #2563eb;
+  border-radius: 50%;
+}
+.business-hero {
+  background: linear-gradient(110deg, #f7f9fc 0%, #f7f9fc 51%, #eef3fb 100%);
+  border-bottom: 1px solid #e1e8f2;
+  padding-top: 52px;
+  overflow: hidden;
+}
+.business-hero-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1.1fr;
+  gap: 55px;
+  align-items: center;
+}
+.business-hero-copy {
+  padding-bottom: 46px;
+}
+.business-hero h1 {
+  font-size: clamp(43px, 4.1vw, 65px);
+  font-weight: 650;
+  letter-spacing: -2.7px;
+  line-height: 1.09;
+  margin-top: 21px;
+  max-width: 570px;
+}
+.business-hero h1 > span {
+  color: #2563eb;
+  display: block;
+  font-weight: 550;
+}
+.business-hero-copy > p {
+  font-size: 15px;
+  color: #506680;
+  line-height: 1.85;
+  margin-top: 24px;
+  max-width: 480px;
+}
+.business-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  margin-top: 29px;
+}
+.business-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 15px 20px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 52px;
+  border: 1px solid transparent;
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.business-button.primary {
+  color: #fff;
+  background: #2563eb;
+  box-shadow: 0 5px 16px #2563eb17;
+}
+.business-button.primary:hover {
+  background: #1d52c7;
+  transform: translateY(-2px);
+}
+.business-button.light {
+  color: #071b36;
+  background: white;
+}
+.business-button.light:hover {
+  background: #e8effa;
+}
+.business-hero-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 550;
+  white-space: nowrap;
+  color: #23456e;
+}
+.business-hero-explore > span {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #bfcee2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.business-hero-assurance {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 23px;
+  color: #5a6f88;
+  font-size: 11px;
+}
+.business-hero-assurance > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.business-hero-assurance svg {
+  color: #2563eb;
+}
+.business-benefit-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  margin-top: 26px;
+  border-top: 1px solid #d7e1ee;
+  padding-block: 25px;
+}
+.business-benefit-strip > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+.business-benefit-strip > div > svg {
+  color: #2563eb;
+}
+.business-benefit-strip > div:not(:last-child):after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  height: 31px;
+  width: 1px;
+  background: #d7e1ee;
+}
+.business-benefit-strip strong {
+  display: block;
+  color: #183453;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.business-benefit-strip > div > span {
+  font-size: 11px;
+  color: #5a6f88;
+}
+.sales-product-stage {
+  min-width: 0;
+  position: relative;
+  padding-bottom: 65px;
+}
+.sales-product-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 5px;
+  margin: 0 13px 12px;
+  background: #e3ebf7;
+  border: 1px solid #d7e2f2;
+  border-radius: 8px;
+}
+.sales-product-tabs > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 37px;
+  background: none;
+  border: 0;
+  border-radius: 5px;
+  color: #49617f;
+  font-size: 11px;
+  font-weight: 550;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  white-space: nowrap;
+}
+.sales-product-tabs > button[aria-pressed="true"] {
+  background: #fff;
+  color: #174c94;
+  box-shadow: 0 2px 7px #173d730b;
+}
+.sales-product-window {
+  background: #fff;
+  border: 1px solid #cfdced;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 21px 55px #163b6b12,
+    0 3px 7px #17396105;
+}
+.sales-window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 47px;
+  border-bottom: 1px solid #e0e8f2;
+  padding: 0 17px;
+  background: #fff;
+}
+.sales-window-bar > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  color: #53657f;
+  font-size: 9px;
+  white-space: nowrap;
+}
+.preview-brand {
+  color: #16375c;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.7px;
+}
+.preview-window-divider {
+  height: 13px;
+  width: 1px;
+  background: #d8e2ef;
+  margin-inline: 2px;
+}
+.sales-demo-label {
+  font-size: 6px;
+  font-weight: 600;
+  letter-spacing: 0.65px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #53657f;
+  white-space: nowrap;
+}
+.sales-demo-label > i {
+  width: 4px;
+  height: 4px;
+  background: #557cae;
+  border-radius: 50%;
+}
+.sales-preview-body {
+  min-height: 360px;
+  background: #f9fbfe;
+}
+.sales-system-preview {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  min-height: 360px;
+}
+.preview-sidebar {
+  border-right: 1px solid #e3eaf3;
+  background: #fff;
+  padding: 21px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.preview-sidebar > span {
+  font-size: 6px;
+  letter-spacing: 0.8px;
+  color: #5b7290;
+  padding-left: 7px;
+  margin-bottom: 11px;
+}
+.preview-sidebar > button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: #586e8a;
+  font-size: 9px;
+  padding: 10px 8px;
+  border-radius: 4px;
+  min-height: 35px;
+}
+.preview-sidebar > button[aria-pressed="true"] {
+  color: #245eae;
+  background: #edf3fe;
+}
+.preview-sidebar > div {
+  margin-top: auto;
+  padding: 50px 7px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  color: #5a7392;
+  font-size: 7px;
+  line-height: 1.5;
+}
+.preview-sidebar > div > svg {
+  color: #53657f;
+}
+.preview-workspace {
+  padding: 22px 19px 16px;
+  min-width: 0;
+}
+.preview-workspace-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.preview-workspace-title small {
+  display: block;
+  font-size: 6px;
+  letter-spacing: 0.8px;
+  color: #53657f;
+}
+.preview-workspace-title h3 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+  margin-top: 5px;
+}
+.preview-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  width: 26px;
+  background: #e7eef9;
+  color: #355c8f;
+  font-size: 8px;
+  font-weight: 550;
+  border-radius: 50%;
+}
+.preview-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+.preview-stats > div {
+  background: #fff;
+  border: 1px solid #dfe7f3;
+  padding: 12px;
+  border-radius: 5px;
+  min-width: 0;
+}
+.preview-stats > div > span {
+  font-size: 7px;
+  color: #5d7290;
+  display: block;
+  white-space: nowrap;
+}
+.preview-stats strong {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -0.7px;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+.preview-stats strong > i {
+  font-style: normal;
+  font-size: 6px;
+  color: #53657f;
+  letter-spacing: 0;
+  font-weight: 400;
+  white-space: normal;
+  max-width: 45px;
+  line-height: 1.5;
+}
+.preview-order-list {
+  margin-top: 19px;
+}
+.preview-list-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 6px;
+  letter-spacing: 0.6px;
+  color: #53657f;
+  padding-bottom: 9px;
+}
+.preview-order-list > div:not(.preview-list-label),
+.preview-stock-list > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-top: 1px solid #e3eaf3;
+  padding: 10px 0;
+}
+.preview-order-icon {
+  height: 27px;
+  width: 27px;
+  background: #edf3fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #53657f;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.preview-order-list > div > div,
+.preview-stock-list > div > div {
+  flex: 1;
+  min-width: 0;
+}
+.preview-order-list strong,
+.preview-stock-list strong {
+  font-size: 9px;
+  font-weight: 550;
+  display: block;
+  line-height: 1.4;
+}
+.preview-order-list small,
+.preview-stock-list small {
+  font-size: 7px;
+  color: #53657f;
+  display: block;
+  margin-top: 3px;
+  line-height: 1.5;
+}
+.preview-order-status {
+  font-size: 6px;
+  font-weight: 500;
+  border-radius: 3px;
+  padding: 4px 6px;
+  white-space: nowrap;
+}
+.preview-order-status.status-new {
+  background: #e9f0fc;
+  color: #345f9f;
+}
+.preview-order-status.status-progress {
+  background: #fff3da;
+  color: #885d16;
+}
+.preview-order-status.status-done {
+  background: #e7f3ee;
+  color: #2d7558;
+}
+.preview-stock-list {
+  margin-top: 22px;
+}
+.preview-stock-list > div {
+  padding-block: 15px;
+}
+.preview-stock-list > div > span:last-child {
+  font-size: 10px;
+  color: #326c59;
+  font-weight: 600;
+}
+.preview-stock-list > div > .preview-stock-low:last-child {
+  color: #91651f;
+}
+.preview-finance {
+  margin-top: 22px;
+}
+.preview-finance > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 15px;
+  background: #fff;
+  border: 1px solid #dce6f2;
+  margin-bottom: 9px;
+  padding: 12px;
+  border-radius: 4px;
+}
+.preview-finance > div > span {
+  font-size: 8px;
+  color: #53657f;
+}
+.preview-finance strong {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.6px;
+}
+.preview-finance svg {
+  grid-column: 2;
+  grid-row: 1/3;
+  align-self: center;
+  color: #53657f;
+}
+.preview-finance p {
+  font-size: 7px;
+  line-height: 1.6;
+  color: #53657f;
+  margin-top: 11px;
+}
+.preview-connected {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: #426f61;
+  border-top: 1px solid #e0e8f2;
+  padding-top: 12px;
+  margin-top: 7px;
+  font-size: 6px;
+  line-height: 1.4;
+}
+.sales-preview-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 14px 19px;
+  background: #edf4ff;
+  border-top: 1px solid #dae5f6;
+  color: #2d5994;
+}
+.sales-preview-cta > span {
+  display: block;
+  font-size: 9px;
+  color: #486b9b;
+}
+.sales-preview-cta strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #183e72;
+  margin-bottom: 2px;
+}
+.sales-preview-cta:hover {
+  background: #e2edfe;
+}
+.sales-product-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 2px 0;
+  color: #53657f;
+  font-size: 7px;
+  line-height: 1.7;
+}
+.sales-product-caption > span:last-child {
+  white-space: nowrap;
+}
+.sales-product-side-note {
+  position: absolute;
+  right: 12px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #d6e2f1;
+  border-radius: 7px;
+  background: white;
+  padding: 12px 16px;
+  box-shadow: 0 7px 25px #143c6e09;
+  width: 330px;
+}
+.sales-product-side-note > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  background: #eaf2ff;
+  color: #2e6dc2;
+  border-radius: 5px;
+}
+.sales-product-side-note > div {
+  flex: 1;
+}
+.sales-product-side-note strong {
+  font-size: 10px;
+  font-weight: 600;
+  display: block;
+}
+.sales-product-side-note small {
+  font-size: 8px;
+  color: #53657f;
+  display: block;
+  margin-top: 3px;
+}
+.sales-product-side-note > svg {
+  color: #53657f;
+}
+.sales-automation-preview,
+.sales-ai-preview {
+  padding: 22px 23px 13px;
+  min-height: 360px;
+}
+.sales-preview-intro {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.preview-feature-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  width: 38px;
+  border-radius: 8px;
+  background: #e5eefc;
+  color: #2563eb;
+}
+.sales-preview-intro small {
+  display: block;
+  font-size: 6px;
+  letter-spacing: 0.8px;
+  color: #53657f;
+}
+.sales-preview-intro h3 {
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  margin-top: 2px;
+}
+.sales-flow {
+  position: relative;
+  margin: 19px 0 13px;
+}
+.sales-flow:before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 20px;
+  bottom: 20px;
+  width: 1px;
+  background: #cbdcf2;
+}
+.sales-flow > div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 51px;
+}
+.sales-flow > div > span:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 29px;
+  width: 29px;
+  background: #fff;
+  border: 1px solid #c5d5eb;
+  border-radius: 7px;
+  color: #53657f;
+  font-size: 9px;
+  z-index: 1;
+}
+.sales-flow > div.executed > span:first-child {
+  color: #fff;
+  background: #2563eb;
+  border-color: #2563eb;
+}
+.sales-flow > div strong {
+  font-size: 11px;
+  font-weight: 550;
+  display: block;
+}
+.sales-flow > div small {
+  display: block;
+  font-size: 8px;
+  color: #53657f;
+  margin-top: 2px;
+}
+.sales-flow-running {
+  height: 5px;
+  width: 5px;
+  background: #2563eb;
+  border-radius: 50%;
+  margin-left: auto;
+  animation: pulse 1s infinite;
+}
+.sales-flow-footer {
+  border-top: 1px solid #dfe8f4;
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.sales-flow-footer > span {
+  font-size: 8px;
+  color: #4e6d94;
+}
+.sales-flow-footer > button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #2563eb;
+  color: white;
+  border: 0;
+  padding: 9px 11px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.sales-preview-note {
+  font-size: 7px;
+  color: #53657f;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.sales-ai-options {
+  display: flex;
+  gap: 6px;
+  margin-top: 18px;
+}
+.sales-ai-options > button {
+  font-size: 9px;
+  line-height: 1.5;
+  padding: 5px 11px;
+  background: #fff;
+  border: 1px solid #d9e4f3;
+  color: #536f96;
+  border-radius: 4px;
+}
+.sales-ai-options > button[aria-pressed="true"] {
+  color: #fff;
+  border-color: #2563eb;
+  background: #2563eb;
+}
+.sales-ai-input {
+  padding: 13px 15px;
+  border: 1px solid #dce6f4;
+  border-radius: 5px;
+  background: #fff;
+  margin-top: 12px;
+}
+.sales-ai-input > span {
+  font-size: 6px;
+  letter-spacing: 0.8px;
+  color: #53657f;
+}
+.sales-ai-input > p {
+  font-size: 11px;
+  line-height: 1.7;
+  margin-top: 6px;
+  color: #3f5b7e;
+}
+.sales-ai-output {
+  padding: 13px 15px;
+  background: #edf4ff;
+  border: 1px solid #d7e5fa;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.sales-ai-output > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #225ba7;
+}
+.sales-ai-output strong {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.sales-ai-output ul {
+  list-style: none;
+  margin-top: 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.sales-ai-output li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8px;
+  color: #4b6b97;
+}
+.sales-ai-output > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 7px;
+  color: #536c8f;
+  margin-top: 11px;
+  border-top: 1px solid #ccdef5;
+  padding-top: 8px;
+}
+.business-problems {
+  padding-block: 75px;
+}
+.business-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 34px;
+}
+.business-section-heading h2 {
+  font-size: clamp(30px, 3vw, 45px);
+  font-weight: 600;
+  letter-spacing: -1.7px;
+  line-height: 1.18;
+  margin-top: 16px;
+}
+.business-section-heading h2 > span {
+  color: #526b8a;
+  font-weight: 450;
+}
+.business-section-heading > p {
+  max-width: 285px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #536b87;
+  padding-bottom: 3px;
+}
+.business-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+.business-problem-grid > a {
+  padding: 25px 0 0;
+  border-top: 1px solid #d8e2ef;
+}
+.business-problem-number {
+  display: block;
+  font-size: 12px;
+  color: #3d70b4;
+  font-weight: 550;
+}
+.business-problem-grid h3 {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-top: 12px;
+}
+.business-problem-grid p {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #536b87;
+  margin-top: 11px;
+  max-width: 340px;
+}
+.business-problem-answer {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 550;
+  color: #2e619f;
+  margin-top: 21px;
+}
+.business-problem-answer > svg:last-child {
+  margin-left: auto;
+}
+.business-solutions {
+  background: #f4f7fc;
+  padding-block: 70px 55px;
+  border-block: 1px solid #e2e9f3;
+}
+.business-offers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 35px;
+}
+.business-offer {
+  background: #fff;
+  border: 1px solid #d9e3f0;
+  padding: 27px 26px 0;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.business-offer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.business-offer-top > span {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #eaf1fd;
+  color: #2563eb;
+}
+.business-offer-top > small {
+  font-size: 10px;
+  color: #53657f;
+}
+.business-offer h3 {
+  font-size: 24px;
+  font-weight: 650;
+  letter-spacing: -0.65px;
+  line-height: 1.25;
+  margin-top: 22px;
+  min-height: 60px;
+  max-width: 250px;
+}
+.business-offer .business-offer-benefit {
+  font-size: 13px;
+  font-weight: 600;
+  color: #214a7d;
+  line-height: 1.7;
+  min-height: 45px;
+  margin-top: 12px;
+}
+.business-offer > p:not(.business-offer-benefit) {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #536b87;
+  margin-top: 10px;
+  min-height: 94px;
+}
+.offer-illustration {
+  height: 133px;
+  margin-top: 22px;
+  border-radius: 6px;
+  background: #f5f8fd;
+  border: 1px solid #dce6f5;
+  overflow: hidden;
+  padding: 18px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.offer-art-brand {
+  font-size: 13px;
+  letter-spacing: -0.6px;
+  font-weight: 600;
+  color: #294b77;
+}
+.offer-system-art > div {
+  display: flex;
+  gap: 5px;
+  margin-top: 13px;
+}
+.offer-system-art > div > span {
+  background: white;
+  border: 1px solid #d9e5f6;
+  color: #4c6c98;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex: 1;
+  padding: 8px 6px;
+  font-size: 7px;
+  border-radius: 3px;
+}
+.offer-illustration > small {
+  font-size: 5.5px;
+  font-weight: 550;
+  letter-spacing: 0.6px;
+  color: #53657f;
+  line-height: 1.7;
+}
+.offer-system-art > small {
+  margin-top: 11px;
+}
+.offer-flow-art > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  margin-top: 15px;
+}
+.offer-flow-art > div > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 9px;
+  font-size: 8px;
+  border: 1px solid #ccdff7;
+  background: white;
+  color: #456b9e;
+  border-radius: 3px;
+}
+.offer-flow-art > div > span:last-child {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+.offer-flow-art > div > svg {
+  color: #53657f;
+  width: 13px;
+}
+.offer-flow-art > p {
+  font-size: 7px;
+  color: #53657f;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+.offer-ai-art {
+  gap: 10px;
+}
+.offer-ai-art > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #d9e5f6;
+  padding: 9px;
+  font-size: 8px;
+  color: #4b6d99;
+  border-radius: 4px;
+}
+.offer-ai-art > div:nth-child(2) {
+  margin-left: 19px;
+  background: #eaf2ff;
+  color: #2b5d9f;
+  border-color: #cadcf6;
+}
+.offer-ai-art > small {
+  font-size: 5px;
+  letter-spacing: 0.3px;
+}
+.business-offer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding-block: 23px 24px;
+  margin-top: auto;
+}
+.business-offer li {
+  font-size: 12px;
+  color: #48617f;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.business-offer li > svg {
+  color: #2e70bd;
+}
+.business-offer-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #dce5f2;
+  color: #194f9c;
+  font-size: 11px;
+  font-weight: 600;
+  padding-block: 18px 8px;
+  line-height: 1.5;
+}
+.business-offer-cta:hover {
+  color: #2563eb;
+}
+.business-offer-demo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  color: #5c7390;
+  padding-bottom: 20px;
+}
+.business-integration {
+  background: #071b36;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 27px 30px;
+  margin-top: 25px;
+  border-radius: 8px;
+}
+.business-integration-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 49px;
+  width: 49px;
+  border: 1px solid #7d9ec23d;
+  background: #123255;
+  border-radius: 8px;
+  color: #8ab7f4;
+  flex-shrink: 0;
+}
+.business-integration > div {
+  flex: 1;
+}
+.business-integration h3 {
+  font-size: 18px;
+  font-weight: 550;
+  letter-spacing: -0.3px;
+  line-height: 1.5;
+}
+.business-integration p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #b7cbe5;
+  margin-top: 4px;
+}
+.business-integration > a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #d9e8ff;
+  border-bottom: 1px solid #8daed55a;
+  padding-block: 9px;
+}
+.business-site .section-kicker {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #3467ac;
+}
+.business-site .section-kicker > span:last-child {
+  font-size: 9px;
+  color: #526b8a;
+}
+.business-site .section-heading {
+  margin-top: 27px;
+  margin-bottom: 32px;
+  gap: 35px;
+}
+.business-site .section-heading h2 {
+  font-size: clamp(30px, 3vw, 45px);
+  line-height: 1.18;
+  font-weight: 600;
+  letter-spacing: -1.6px;
+}
+.business-site .section-heading h2 .text-muted {
+  color: #526b8a;
+  font-weight: 450;
+}
+.business-site .section-heading > p {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #536b87;
+  max-width: 300px;
+}
+.business-site .laboratory {
+  padding-block: 68px 48px;
+}
+.business-site .lab-tabs {
+  gap: 35px;
+}
+.business-site .lab-tabs > button {
+  font-size: 13px;
+  padding-block: 18px;
+  gap: 12px;
+  font-weight: 550;
+}
+.business-site .lab-tabs > button > span:first-child {
+  font-size: 10px;
+}
+.business-site .product-caption {
+  font-size: 11px;
+  line-height: 1.6;
+  padding-block: 3px 19px;
+}
+.business-site .product-caption > span:last-child {
+  font-size: 9px;
+}
+.business-site .lab-conversion > p {
+  font-size: 14px;
+}
+.business-site .lab-conversion .text-link {
+  font-size: 12px;
+}
+.business-site .dashboard {
+  box-shadow: 0 15px 40px #193e6f09;
+  border-radius: 8px;
+}
+.business-site .dash-top {
+  height: 60px;
+}
+.business-site .dash-workspace {
+  font-size: 12px;
+}
+.business-site .demo-badge {
+  font-size: 8px;
+}
+.business-site .dash-layout {
+  grid-template-columns: 190px minmax(0, 1fr);
+}
+.business-site .dash-main {
+  padding: 26px 28px 0;
+}
+.business-site .dash-sidebar nav button {
+  font-size: 12px;
+  padding: 12px 13px;
+  min-height: 42px;
+}
+.business-site .sidebar-caption {
+  font-size: 8px;
+}
+.business-site .sidebar-footer {
+  font-size: 9px;
+}
+.business-site .sidebar-footer > span:last-child {
+  font-size: 8px;
+}
+.business-site .dash-breadcrumb {
+  font-size: 10px;
+}
+.business-site .dash-heading h4 {
+  font-size: 29px;
+  letter-spacing: -0.8px;
+}
+.business-site .dash-heading p {
+  font-size: 11px;
+}
+.business-site .dash-primary {
+  font-size: 11px;
+  padding: 11px 15px;
+  min-height: 38px;
+}
+.business-site .dash-notice {
+  font-size: 10px;
+  min-height: 22px;
+}
+.business-site .dash-metrics > div {
+  padding: 18px;
+}
+.business-site .dash-metrics > div > span {
+  font-size: 10px;
+}
+.business-site .dash-metrics > div > strong {
+  font-size: 30px;
+}
+.business-site .dash-metrics > div > strong > small {
+  font-size: 11px;
+}
+.business-site .dash-metrics > div > small {
+  font-size: 9px;
+}
+.business-site .panel-title {
+  padding: 18px;
+}
+.business-site .panel-title h5 {
+  font-size: 12px;
+}
+.business-site .panel-title > span,
+.business-site .panel-title > div > span {
+  font-size: 9px;
+}
+.business-site .bar-chart {
+  padding-top: 20px;
+  padding-bottom: 19px;
+}
+.business-site .chart-value {
+  font-size: 9px;
+}
+.business-site .chart-label {
+  font-size: 9px;
+}
+.business-site .chart-bar-track {
+  height: 90px;
+}
+.business-site .table-search input,
+.business-site .table-controls > select {
+  font-size: 10px;
+}
+.business-site .table-scroll table {
+  font-size: 11px;
+}
+.business-site .table-scroll th {
+  font-size: 9px;
+  padding: 12px 18px;
+}
+.business-site .table-scroll td {
+  padding: 12px 18px;
+}
+.business-site .table-scroll td strong {
+  font-size: 11px;
+}
+.business-site .table-scroll td small {
+  font-size: 9px;
+}
+.business-site .status-select {
+  font-size: 9px;
+  min-height: 27px;
+  max-width: 128px;
+}
+.business-site .dash-bottom {
+  font-size: 8px;
+  padding-block: 1px 16px;
+}
+.business-site .client-list strong,
+.business-site .stock-list strong {
+  font-size: 13px;
+}
+.business-site .client-list small,
+.business-site .stock-list small {
+  font-size: 10px;
+}
+.business-site .dash-secondary {
+  font-size: 10px;
+  min-height: 34px;
+}
+.business-site .stock-warning,
+.business-site .stock-ok {
+  font-size: 10px;
+}
+.business-site .automation-rules > div > span {
+  font-size: 12px;
+}
+.business-site .toggle {
+  width: 36px;
+  height: 22px;
+  padding: 4px;
+}
+.business-site .toggle > span {
+  width: 14px;
+  height: 14px;
+}
+.business-site .toggle.on > span {
+  transform: translateX(14px);
+}
+.business-site .automation-demo,
+.business-site .ai-demo {
+  border-radius: 8px;
+}
+.business-site .experiment-intro h4,
+.business-site .ai-scenarios h4 {
+  font-weight: 550;
+  font-size: 35px;
+}
+.business-site .experiment-intro > p,
+.business-site .ai-scenarios > p {
+  font-size: 14px;
+}
+.business-site .automation-toolbar label {
+  font-size: 12px;
+}
+.business-site .flow-steps li {
+  font-size: 12px;
+}
+.business-site .flow-result {
+  font-size: 13px;
+}
+.business-site .demo-disclaimer {
+  font-size: 10px;
+}
+.business-site .ai-message > p {
+  font-size: 14px;
+}
+.business-site .ai-action > p {
+  font-size: 13px;
+}
+.business-site .ai-response li {
+  font-size: 11px;
+}
+.business-site .ai-scenarios > div > button > span {
+  font-size: 12px;
+}
+.business-process {
+  background: #f5f8fd;
+  border-block: 1px solid #e0e8f3;
+  padding-block: 62px;
+}
+.business-process-track {
+  height: 2px;
+  background: #d8e5f6;
+  margin-top: 39px;
+  overflow: hidden;
+}
+.business-process-track > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #2563eb;
+  transform-origin: left;
+}
+.business-process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 21px;
+}
+.business-process-steps article > span {
+  display: inline-flex;
+  font-size: 13px;
+  color: #376ba9;
+  font-weight: 600;
+  padding-top: 4px;
+}
+.business-process-steps h3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+  margin-top: 15px;
+}
+.business-process-steps p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: #536b87;
+  margin-top: 11px;
+}
+.business-site .studies {
+  padding-block: 62px;
+}
+.business-site .study-meta h3 {
+  font-size: 27px;
+  font-weight: 550;
+  line-height: 1.35;
+}
+.business-site .study-meta > p {
+  font-size: 13px;
+}
+.business-site .study-meta > .eyebrow {
+  font-size: 9px;
+}
+.business-site .study-meta > .eyebrow > small {
+  font-size: 7px;
+}
+.business-site .study-stock {
+  margin-top: 45px;
+}
+.business-site .studies-grid {
+  gap: 28px;
+}
+.business-site .simulator {
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+.business-site .simulator h2 {
+  font-size: clamp(32px, 3.3vw, 49px);
+  letter-spacing: -1.7px;
+  font-weight: 550;
+}
+.business-site .simulator-heading {
+  margin-top: 33px;
+}
+.business-site .simulator-heading > p {
+  font-size: 13px;
+  max-width: 300px;
+}
+.business-site .simulator .section-kicker,
+.business-site .simulator .section-kicker > span:last-child {
+  color: #bed2ec;
+}
+.business-site .range-control > div:first-child {
+  font-size: 12px;
+}
+.business-site .range-control output {
+  font-size: 13px;
+}
+.business-site .range-control {
+  margin-bottom: 24px;
+}
+.business-site .recovered > span {
+  font-size: 9px;
+}
+.business-site .recovered output {
+  font-size: clamp(64px, 6.6vw, 96px);
+  letter-spacing: -0.05em;
+}
+.business-site .recovered > p {
+  font-size: 12px;
+}
+.business-site .equivalent-values > div > span {
+  font-size: 11px;
+}
+.business-site .equivalent-values output {
+  font-size: clamp(20px, 2.3vw, 31px);
+  white-space: normal;
+}
+.business-site .simulator-bottom > p {
+  font-size: 10px;
+  max-width: 610px;
+}
+.business-site .simulator-bottom > .button {
+  font-size: 12px;
+  border-radius: 5px;
+}
+.business-site .comparison {
+  padding-block: 57px;
+  background: #f7f9fc;
+}
+.business-site .comparison > h2 {
+  font-size: clamp(34px, 3.8vw, 55px);
+  font-weight: 550;
+  letter-spacing: -1.8px;
+  line-height: 1.16;
+  margin-top: 30px;
+}
+.business-site .comparison > h2 > span {
+  font-weight: 450;
+}
+.business-site .comparison-body {
+  margin-top: 33px;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 60px;
+}
+.business-site .comparison-copy > p:first-child {
+  font-size: 15px;
+}
+.business-site .comparison-toggle button {
+  font-size: 12px;
+  padding: 12px 15px;
+}
+.business-site .sector-label {
+  font-size: 11px;
+}
+.business-site .sector-label select {
+  font-size: 12px;
+}
+.business-site .comparison-explanation {
+  font-size: 13px;
+  min-height: 75px;
+}
+.business-site .comparison-copy > .small-note {
+  font-size: 8px;
+}
+.business-site .comparison-label {
+  font-size: 8px;
+}
+.business-site .map-module {
+  font-size: 10px;
+  padding: 12px;
+  min-width: 110px;
+}
+.business-site .map-module.unavailable {
+  font-size: 8px;
+}
+.business-site .map-center {
+  font-size: 17px;
+}
+.business-site .map-center > span {
+  font-size: 6px;
+}
+.business-site .comparison-foot {
+  font-size: 10px;
+}
+.business-site .system-comparison {
+  border-radius: 7px;
+}
+.business-faq {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 85px;
+  padding-block: 66px;
+}
+.business-faq h2 {
+  font-size: 38px;
+  letter-spacing: -1.3px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-top: 17px;
+}
+.business-faq h2 > span {
+  color: #526b8a;
+  font-weight: 450;
+}
+.business-faq > div > p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: #536b87;
+  max-width: 345px;
+  margin-top: 20px;
+}
+.business-faq details {
+  border-bottom: 1px solid #dce5f1;
+}
+.business-faq details:first-child {
+  border-top: 1px solid #dce5f1;
+}
+.business-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+  padding: 21px 0;
+}
+.business-faq summary::-webkit-details-marker {
+  display: none;
+}
+.business-faq summary > svg {
+  color: #4c6e9a;
+  transition: transform 0.2s;
+}
+.business-faq details[open] summary > svg {
+  transform: rotate(180deg);
+}
+.business-faq details > p {
+  font-size: 13px;
+  color: #536b87;
+  line-height: 1.9;
+  padding-bottom: 23px;
+}
+.business-final {
+  padding-block: 58px;
+  background: #071b36;
+  color: white;
+}
+.business-final > .business-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 70px;
+  align-items: center;
+}
+.business-final .business-eyebrow {
+  font-size: 9px;
+  color: #a7c4e8;
+}
+.business-final h2 {
+  font-size: clamp(35px, 3.5vw, 52px);
+  letter-spacing: -1.6px;
+  line-height: 1.15;
+  font-weight: 550;
+  margin-top: 20px;
+}
+.business-final p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: #c1d2e9;
+  margin-top: 19px;
+}
+.business-final .business-button {
+  margin-top: 26px;
+  font-size: 12px;
+}
+.business-final-offers {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.business-final-offers > a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #6d8cb642;
+  border-radius: 7px;
+  padding: 20px 19px;
+  background: #0e2848;
+  transition: background 0.2s;
+}
+.business-final-offers > a:hover {
+  background: #173858;
+}
+.business-final-offers > a > span {
+  height: 39px;
+  width: 39px;
+  background: #1a3c64;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9dc5ff;
+}
+.business-final-offers > a > div {
+  flex: 1;
+}
+.business-final-offers strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 550;
+}
+.business-final-offers small {
+  display: block;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #b4cbe6;
+  margin-top: 4px;
+}
+.business-final-offers > a > svg {
+  color: #8fb5e8;
+}
+.business-site .contact {
+  padding-block: 65px;
+  gap: 90px;
+  grid-template-columns: 0.85fr 1.15fr;
+}
+.business-site .contact-intro > .eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.9px;
+  color: #3467ac;
+}
+.business-site .contact h2 {
+  font-size: clamp(36px, 3.7vw, 53px);
+  letter-spacing: -1.8px;
+  font-weight: 550;
+  line-height: 1.15;
+}
+.business-site .contact-intro > p {
+  font-size: 14px;
+  line-height: 1.85;
+  max-width: 350px;
+}
+.business-site .contact-mode {
+  font-size: 11px;
+  max-width: 340px;
+}
+.business-site .contact-mode > p {
+  font-size: 11px;
+  line-height: 1.8;
+}
+.business-site .form-field {
+  font-size: 12px;
+  gap: 10px;
+}
+.business-site .form-field input,
+.business-site .form-field select,
+.business-site .form-field textarea {
+  font-size: 13px;
+  min-height: 46px;
+  line-height: 1.6;
+  border-color: #cad8ea;
+}
+.business-site .form-field input::placeholder,
+.business-site .form-field textarea::placeholder {
+  font-size: 12px;
+}
+.business-site .form-field small {
+  font-size: 8px;
+}
+.business-site .form-grid {
+  gap: 25px 24px;
+}
+.business-site .consent {
+  font-size: 10px;
+  line-height: 1.8;
+  gap: 10px;
+}
+.business-site .consent input {
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+}
+.business-site .contact-submit {
+  font-size: 13px;
+  min-height: 52px;
+  border-radius: 5px;
+}
+.business-site .form-message {
+  font-size: 12px;
+}
+.business-site .field-error {
+  font-size: 11px;
+}
+.business-site .briefing-context > div > span {
+  font-size: 8px;
+}
+.business-site .briefing-context strong {
+  font-size: 13px;
+}
+.business-site .briefing-context small {
+  font-size: 11px;
+}
+.business-footer {
+  background: #f4f7fc;
+  border-top: 1px solid #dce5f1;
+  padding-block: 42px 20px;
+}
+.business-footer-top {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr 0.7fr;
+  gap: 50px;
+}
+.business-footer-top > div:first-child > p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: #536b87;
+  margin-top: 17px;
+}
+.business-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: #4d6584;
+}
+.business-footer-links > span {
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #335c90;
+  margin-bottom: 8px;
+}
+.business-footer-links > a:hover {
+  color: #2563eb;
+}
+.business-privacy {
+  font-size: 10px;
+  color: #526b8a;
+  margin-top: 31px;
+  max-width: 850px;
+}
+.business-privacy summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  cursor: pointer;
+}
+.business-privacy summary::-webkit-details-marker {
+  display: none;
+}
+.business-privacy p {
+  font-size: 11px;
+  line-height: 1.85;
+  color: #526b8a;
+  margin-top: 13px;
+}
+.business-footer-bottom {
+  border-top: 1px solid #d8e3f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  font-size: 10px;
+  color: #536b87;
+  padding-top: 22px;
+  margin-top: 23px;
+}
+.business-footer-bottom > a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.business-site .study-dialog h3,
+.business-site .order-dialog h3 {
+  font-weight: 550;
+}
+.business-site .study-dialog p,
+.business-site .order-dialog > p {
+  font-size: 13px;
+}
+.business-site .brand-inverse > span {
+  color: #53657f;
+}
+@media (max-width: 1199px) {
+  .business-hero-grid {
+    gap: 32px;
+    grid-template-columns: 0.94fr 1.06fr;
+  }
+  .business-hero h1 {
+    font-size: 49px;
+    letter-spacing: -2px;
+  }
+  .business-hero-copy > p {
+    font-size: 14px;
+  }
+  .business-hero-actions {
+    gap: 17px;
+    flex-wrap: wrap;
+  }
+  .business-button {
+    font-size: 11px;
+    gap: 18px;
+    padding-inline: 17px;
+  }
+  .business-hero-explore {
+    font-size: 11px;
+  }
+  .sales-system-preview {
+    grid-template-columns: 94px minmax(0, 1fr);
+  }
+  .preview-sidebar {
+    padding-inline: 6px;
+  }
+  .preview-sidebar > button {
+    font-size: 8px;
+    gap: 5px;
+    padding: 10px 6px;
+  }
+  .preview-sidebar > button svg {
+    width: 13px;
+  }
+  .preview-sidebar > span {
+    font-size: 5px;
+  }
+  .preview-workspace {
+    padding: 20px 13px 14px;
+  }
+  .preview-workspace-title h3 {
+    font-size: 16px;
+  }
+  .preview-stats {
+    gap: 7px;
+  }
+  .preview-stats > div {
+    padding: 10px;
+  }
+  .preview-stats strong {
+    font-size: 21px;
+  }
+  .preview-stats > div > span {
+    font-size: 6px;
+  }
+  .sales-window-bar {
+    padding-inline: 13px;
+    gap: 9px;
+  }
+  .sales-window-bar > div {
+    gap: 6px;
+    font-size: 7px;
+  }
+  .preview-brand {
+    font-size: 12px;
+  }
+  .sales-demo-label {
+    font-size: 5px;
+  }
+  .sales-product-tabs {
+    margin-inline: 8px;
+  }
+  .sales-product-tabs > button {
+    font-size: 9px;
+    gap: 6px;
+  }
+  .sales-product-tabs > button svg {
+    width: 14px;
+  }
+  .preview-order-status {
+    font-size: 5.5px;
+    padding: 4px;
+  }
+  .preview-order-list strong,
+  .preview-stock-list strong {
+    font-size: 8px;
+  }
+  .preview-order-list small,
+  .preview-stock-list small {
+    font-size: 6px;
+  }
+  .sales-product-caption {
+    font-size: 6px;
+  }
+  .sales-product-side-note {
+    width: 305px;
+  }
+  .business-section-heading {
+    gap: 30px;
+  }
+  .business-section-heading > p {
+    max-width: 250px;
+    font-size: 13px;
+  }
+  .business-section-heading h2 {
+    font-size: 36px;
+  }
+  .business-offer {
+    padding: 24px 20px 0;
+  }
+  .business-offer h3 {
+    font-size: 23px;
+  }
+  .business-offer > p:not(.business-offer-benefit) {
+    font-size: 12px;
+    min-height: 108px;
+  }
+  .business-offer .business-offer-benefit {
+    font-size: 12px;
+  }
+  .business-offer li {
+    font-size: 11px;
+  }
+  .business-offer-cta {
+    font-size: 10px;
+  }
+  .offer-illustration {
+    padding-inline: 10px;
+  }
+  .offer-system-art > div > span {
+    font-size: 6px;
+    padding: 8px 4px;
+    gap: 4px;
+  }
+  .offer-system-art > div > span svg {
+    width: 9px;
+  }
+  .offer-flow-art > div > span {
+    font-size: 7px;
+    padding: 8px 6px;
+  }
+  .offer-flow-art > div > svg {
+    width: 11px;
+  }
+  .offer-flow-art > p {
+    font-size: 6px;
+  }
+  .offer-ai-art > div {
+    font-size: 7px;
+    gap: 5px;
+    padding: 8px 6px;
+  }
+  .offer-ai-art > small {
+    font-size: 4.5px;
+  }
+  .business-integration {
+    gap: 17px;
+    padding: 23px;
+  }
+  .business-integration h3 {
+    font-size: 16px;
+  }
+  .business-integration p {
+    font-size: 10px;
+  }
+  .business-integration > a {
+    font-size: 10px;
+    gap: 9px;
+  }
+  .business-site .dash-layout {
+    grid-template-columns: 166px minmax(0, 1fr);
+  }
+  .business-site .dash-sidebar nav button {
+    font-size: 10px;
+    padding-inline: 10px;
+  }
+  .business-site .dash-main {
+    padding: 24px 22px 0;
+  }
+  .business-site .dash-metrics > div {
+    padding: 15px;
+  }
+  .business-site .dash-metrics > div > strong {
+    font-size: 27px;
+  }
+  .business-site .dash-metrics > div > small {
+    font-size: 8px;
+  }
+  .business-site .dash-metrics > div > span {
+    font-size: 9px;
+  }
+  .business-site .table-scroll td,
+  .business-site .table-scroll th {
+    padding-inline: 13px;
+  }
+  .business-site .dash-bottom {
+    font-size: 7px;
+  }
+  .business-process-steps {
+    gap: 25px;
+  }
+  .business-process-steps h3 {
+    font-size: 16px;
+  }
+  .business-process-steps p {
+    font-size: 11px;
+  }
+  .business-faq {
+    gap: 55px;
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+  .business-faq h2 {
+    font-size: 33px;
+  }
+  .business-final > .business-wrap {
+    gap: 50px;
+  }
+  .business-final h2 {
+    font-size: 40px;
+  }
+  .business-final-offers strong {
+    font-size: 13px;
+  }
+  .business-final-offers small {
+    font-size: 10px;
+  }
+  .business-site .contact {
+    gap: 60px;
+  }
+  .business-site .comparison-body {
+    gap: 40px;
+  }
+  .sales-preview-intro h3 {
+    font-size: 15px;
+  }
+  .sales-ai-output strong {
+    font-size: 9px;
+  }
+  .sales-flow > div strong {
+    font-size: 10px;
+  }
+}
+@media (max-width: 960px) {
+  .business-wrap {
+    width: calc(100% - 48px);
+  }
+  .business-site .section-pad {
+    padding-inline: 24px;
+  }
+  .business-header-inner {
+    gap: 22px;
+    min-height: 81px;
+  }
+  .business-header nav {
+    gap: 20px;
+  }
+  .business-header nav > a {
+    font-size: 11px;
+  }
+  .business-header-cta {
+    font-size: 10px;
+    gap: 15px;
+    padding: 11px 13px;
+  }
+  .business-brand {
+    font-size: 26px;
+  }
+  .business-brand-lockup > span {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+  .business-utility {
+    font-size: 9px;
+  }
+  .business-hero {
+    padding-top: 39px;
+  }
+  .business-hero-grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 23px;
+  }
+  .business-hero h1 {
+    font-size: 40px;
+    letter-spacing: -1.7px;
+  }
+  .business-hero-copy {
+    padding-bottom: 35px;
+  }
+  .business-hero-copy > .business-eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.5px;
+  }
+  .business-hero-copy > p {
+    font-size: 12px;
+    line-height: 1.85;
+    margin-top: 20px;
+  }
+  .business-hero-actions {
+    margin-top: 23px;
+    gap: 15px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .business-hero-actions > .business-button {
+    font-size: 10px;
+    min-height: 46px;
+    gap: 12px;
+    padding-inline: 14px;
+    justify-content: center;
+  }
+  .business-hero-explore {
+    align-self: flex-start;
+    font-size: 11px;
+  }
+  .business-hero-assurance {
+    gap: 9px 15px;
+    font-size: 8px;
+    margin-top: 18px;
+  }
+  .business-hero-assurance svg {
+    width: 12px;
+  }
+  .sales-system-preview {
+    grid-template-columns: 80px minmax(0, 1fr);
+    min-height: 342px;
+  }
+  .sales-preview-body {
+    min-height: 342px;
+  }
+  .preview-sidebar {
+    padding-top: 18px;
+  }
+  .preview-sidebar > span {
+    font-size: 4.3px;
+    letter-spacing: 0.4px;
+    padding-left: 4px;
+  }
+  .preview-sidebar > button {
+    font-size: 7px;
+    gap: 4px;
+    padding: 10px 4px;
+  }
+  .preview-sidebar > button svg {
+    width: 11px;
+  }
+  .preview-sidebar > div {
+    font-size: 6px;
+    padding-inline: 3px;
+    gap: 4px;
+  }
+  .preview-sidebar > div svg {
+    width: 12px;
+  }
+  .preview-workspace {
+    padding: 18px 10px 12px;
+  }
+  .preview-workspace-title h3 {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .preview-workspace-title small {
+    font-size: 5px;
+    letter-spacing: 0.6px;
+  }
+  .preview-account {
+    height: 21px;
+    width: 21px;
+    font-size: 6px;
+  }
+  .preview-stats {
+    gap: 5px;
+    margin-top: 17px;
+  }
+  .preview-stats > div {
+    padding: 10px 7px;
+  }
+  .preview-stats > div > span {
+    font-size: 5.5px;
+    white-space: normal;
+    line-height: 1.5;
+    min-height: 17px;
+  }
+  .preview-stats strong {
+    font-size: 17px;
+    gap: 4px;
+    margin-top: 3px;
+  }
+  .preview-stats strong > i {
+    font-size: 4.8px;
+    max-width: 29px;
+  }
+  .preview-order-list {
+    margin-top: 17px;
+  }
+  .preview-list-label {
+    font-size: 4.8px;
+    letter-spacing: 0.3px;
+  }
+  .preview-order-list > div:not(.preview-list-label),
+  .preview-stock-list > div {
+    gap: 5px;
+    padding-block: 11px;
+  }
+  .preview-order-icon {
+    width: 21px;
+    height: 24px;
+  }
+  .preview-order-icon svg {
+    width: 12px;
+  }
+  .preview-order-list strong,
+  .preview-stock-list strong {
+    font-size: 7px;
+  }
+  .preview-order-list small,
+  .preview-stock-list small {
+    font-size: 5.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
+  }
+  .preview-order-status {
+    font-size: 4.5px;
+    padding: 4px 3px;
+  }
+  .preview-connected {
+    font-size: 5.5px;
+    margin-top: 4px;
+    gap: 3px;
+    line-height: 1.5;
+  }
+  .preview-connected svg {
+    width: 10px;
+  }
+  .sales-product-tabs {
+    padding: 4px;
+    gap: 2px;
+    margin: 0 0 10px;
+  }
+  .sales-product-tabs > button {
+    font-size: 8px;
+    gap: 5px;
+    min-height: 34px;
+  }
+  .sales-product-tabs > button svg {
+    width: 12px;
+  }
+  .sales-window-bar {
+    padding-inline: 10px;
+    min-height: 41px;
+    gap: 7px;
+  }
+  .sales-window-bar > div {
+    font-size: 6px;
+    gap: 5px;
+  }
+  .sales-window-bar > div > svg {
+    width: 9px;
+  }
+  .preview-brand {
+    font-size: 10px;
+  }
+  .preview-window-divider {
+    margin: 0;
+    height: 11px;
+  }
+  .sales-demo-label {
+    font-size: 4px;
+    letter-spacing: 0.2px;
+    gap: 3px;
+  }
+  .sales-demo-label i {
+    width: 3px;
+    height: 3px;
+  }
+  .sales-preview-cta {
+    padding: 12px 13px;
+    gap: 10px;
+  }
+  .sales-preview-cta strong {
+    font-size: 9px;
+    line-height: 1.6;
+  }
+  .sales-preview-cta > span {
+    font-size: 7px;
+  }
+  .sales-preview-cta > svg {
+    width: 17px;
+  }
+  .sales-product-caption {
+    font-size: 5px;
+    gap: 7px;
+    padding-top: 9px;
+    line-height: 1.8;
+  }
+  .sales-product-caption > span:last-child {
+    white-space: normal;
+    max-width: 105px;
+    text-align: right;
+  }
+  .sales-product-side-note {
+    width: 285px;
+    right: 0;
+    padding: 10px 12px;
+    gap: 9px;
+  }
+  .sales-product-side-note > span {
+    height: 29px;
+    width: 29px;
+  }
+  .sales-product-side-note strong {
+    font-size: 9px;
+  }
+  .sales-product-side-note small {
+    font-size: 7px;
+  }
+  .sales-product-side-note > svg {
+    width: 14px;
+  }
+  .sales-automation-preview,
+  .sales-ai-preview {
+    padding: 18px 14px 12px;
+    min-height: 342px;
+  }
+  .sales-preview-intro {
+    gap: 9px;
+  }
+  .preview-feature-symbol {
+    height: 31px;
+    width: 31px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .preview-feature-symbol svg {
+    width: 17px;
+  }
+  .sales-preview-intro h3 {
+    font-size: 13px;
+  }
+  .sales-preview-intro small {
+    font-size: 5px;
+    letter-spacing: 0.5px;
+  }
+  .sales-flow {
+    margin-block: 17px 12px;
+  }
+  .sales-flow > div {
+    gap: 10px;
+    min-height: 48px;
+  }
+  .sales-flow > div strong {
+    font-size: 9px;
+  }
+  .sales-flow > div small {
+    font-size: 6.5px;
+  }
+  .sales-flow > div > span:first-child {
+    height: 26px;
+    width: 26px;
+    font-size: 8px;
+  }
+  .sales-flow:before {
+    left: 12px;
+  }
+  .sales-flow-footer {
+    gap: 9px;
+  }
+  .sales-flow-footer > span {
+    font-size: 6px;
+    max-width: 145px;
+  }
+  .sales-flow-footer > button {
+    font-size: 7px;
+    padding: 8px;
+    gap: 5px;
+  }
+  .sales-flow-footer > button svg {
+    width: 12px;
+  }
+  .sales-preview-note {
+    font-size: 5.5px;
+    margin-top: 9px;
+  }
+  .sales-ai-options {
+    gap: 5px;
+    margin-top: 16px;
+  }
+  .sales-ai-options > button {
+    font-size: 7px;
+    padding: 5px 9px;
+  }
+  .sales-ai-input {
+    padding: 11px;
+    margin-top: 11px;
+  }
+  .sales-ai-input > span {
+    font-size: 5px;
+  }
+  .sales-ai-input > p {
+    font-size: 9px;
+    margin-top: 5px;
+  }
+  .sales-ai-output {
+    padding: 11px;
+    margin-top: 9px;
+  }
+  .sales-ai-output strong {
+    font-size: 8px;
+  }
+  .sales-ai-output > div {
+    gap: 5px;
+  }
+  .sales-ai-output > div > svg {
+    width: 12px;
+  }
+  .sales-ai-output li {
+    font-size: 7px;
+  }
+  .sales-ai-output ul {
+    gap: 4px;
+    margin-top: 7px;
+  }
+  .sales-ai-output > span {
+    font-size: 5.5px;
+    margin-top: 8px;
+    padding-top: 7px;
+    gap: 4px;
+  }
+  .sales-ai-output > span svg {
+    width: 10px;
+  }
+  .business-benefit-strip {
+    gap: 24px;
+    margin-top: 15px;
+    padding-block: 22px;
+  }
+  .business-benefit-strip > div {
+    gap: 12px;
+  }
+  .business-benefit-strip > div > svg {
+    width: 19px;
+  }
+  .business-benefit-strip strong {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .business-benefit-strip > div > span {
+    font-size: 9px;
+    line-height: 1.6;
+  }
+  .business-benefit-strip > div:not(:last-child):after {
+    right: 1px;
+    height: 35px;
+  }
+  .business-problems {
+    padding-block: 52px;
+  }
+  .business-section-heading {
+    gap: 25px;
+    margin-bottom: 28px;
+  }
+  .business-section-heading h2 {
+    font-size: 30px;
+    letter-spacing: -1.1px;
+  }
+  .business-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+  .business-section-heading > p {
+    font-size: 11px;
+    max-width: 215px;
+  }
+  .business-problem-grid {
+    gap: 25px;
+  }
+  .business-problem-grid h3 {
+    font-size: 17px;
+  }
+  .business-problem-grid p {
+    font-size: 11px;
+  }
+  .business-problem-answer {
+    font-size: 9px;
+    gap: 6px;
+    margin-top: 19px;
+  }
+  .business-problem-answer svg {
+    width: 13px;
+  }
+  .business-solutions {
+    padding-block: 52px 40px;
+  }
+  .business-offers-grid {
+    gap: 15px;
+  }
+  .business-offer {
+    padding: 21px 16px 0;
+  }
+  .business-offer-top > span {
+    width: 35px;
+    height: 35px;
+  }
+  .business-offer-top > span svg {
+    width: 18px;
+  }
+  .business-offer h3 {
+    font-size: 20px;
+    min-height: 50px;
+    letter-spacing: -0.4px;
+  }
+  .business-offer .business-offer-benefit {
+    font-size: 11px;
+    min-height: 55px;
+  }
+  .business-offer > p:not(.business-offer-benefit) {
+    font-size: 11px;
+    min-height: 120px;
+  }
+  .business-offer ul {
+    padding-block: 20px;
+    gap: 11px;
+  }
+  .business-offer li {
+    font-size: 9px;
+    gap: 6px;
+  }
+  .business-offer li > svg {
+    width: 11px;
+  }
+  .business-offer-cta {
+    font-size: 9px;
+    gap: 7px;
+    padding-top: 17px;
+  }
+  .business-offer-cta > svg {
+    width: 13px;
+  }
+  .business-offer-demo {
+    font-size: 8px;
+    gap: 6px;
+    padding-bottom: 18px;
+  }
+  .offer-illustration {
+    height: 115px;
+    padding: 13px 8px;
+    margin-top: 17px;
+  }
+  .offer-art-brand {
+    font-size: 11px;
+  }
+  .offer-system-art > div {
+    gap: 3px;
+    margin-top: 10px;
+  }
+  .offer-system-art > div > span {
+    font-size: 5px;
+    padding: 7px 4px;
+    gap: 0;
+  }
+  .offer-system-art > div > span > svg {
+    display: none;
+  }
+  .offer-illustration > small {
+    font-size: 4.5px;
+    letter-spacing: 0.3px;
+  }
+  .offer-flow-art > div {
+    gap: 3px;
+    margin-top: 12px;
+  }
+  .offer-flow-art > div > span {
+    padding: 7px 5px;
+    font-size: 6px;
+    gap: 3px;
+  }
+  .offer-flow-art > div > span > svg {
+    width: 8px;
+  }
+  .offer-flow-art > div > svg {
+    width: 9px;
+  }
+  .offer-flow-art > p {
+    font-size: 5px;
+    margin-top: 10px;
+  }
+  .offer-ai-art {
+    gap: 8px;
+  }
+  .offer-ai-art > div {
+    font-size: 6px;
+    gap: 4px;
+    padding: 7px 5px;
+  }
+  .offer-ai-art > div > svg {
+    width: 11px;
+  }
+  .offer-ai-art > div:nth-child(2) {
+    margin-left: 10px;
+  }
+  .offer-ai-art > small {
+    font-size: 3.8px;
+    letter-spacing: 0.1px;
+  }
+  .business-integration {
+    gap: 14px;
+    padding: 22px 20px;
+    flex-wrap: wrap;
+  }
+  .business-integration-symbol {
+    height: 41px;
+    width: 41px;
+  }
+  .business-integration-symbol svg {
+    width: 22px;
+  }
+  .business-integration h3 {
+    font-size: 15px;
+  }
+  .business-integration p {
+    font-size: 10px;
+  }
+  .business-integration > a {
+    margin-left: 55px;
+    font-size: 11px;
+  }
+  .business-site .section-heading h2 {
+    font-size: 32px;
+    letter-spacing: -1.2px;
+  }
+  .business-site .section-heading > p {
+    font-size: 11px;
+    max-width: 230px;
+  }
+  .business-site .laboratory {
+    padding-block: 50px 37px;
+  }
+  .business-site .lab-tabs {
+    gap: 24px;
+  }
+  .business-site .lab-tabs > button {
+    font-size: 11px;
+    gap: 8px;
+  }
+  .business-site .product-caption {
+    font-size: 9px;
+  }
+  .business-site .dash-layout {
+    grid-template-columns: 130px minmax(0, 1fr);
+  }
+  .business-site .dash-sidebar nav button {
+    font-size: 9px;
+    gap: 7px;
+    padding: 11px 8px;
+  }
+  .business-site .dash-main {
+    padding: 22px 16px 0;
+  }
+  .business-site .dash-heading h4 {
+    font-size: 25px;
+  }
+  .business-site .dash-heading p {
+    font-size: 9px;
+  }
+  .business-site .dash-primary {
+    font-size: 9px;
+    padding: 10px 11px;
+  }
+  .business-site .dash-metrics > div {
+    padding: 13px 11px;
+  }
+  .business-site .dash-metrics > div > strong {
+    font-size: 24px;
+  }
+  .business-site .dash-metrics > div > strong > small {
+    font-size: 8px;
+  }
+  .business-site .dash-metrics > div > span {
+    font-size: 8px;
+  }
+  .business-site .dash-metrics > div > small {
+    font-size: 7px;
+  }
+  .business-site .panel-title {
+    padding: 14px;
+  }
+  .business-site .panel-title h5 {
+    font-size: 10px;
+  }
+  .business-site .panel-title > span,
+  .business-site .panel-title > div > span {
+    font-size: 7px;
+  }
+  .business-site .chart-value,
+  .business-site .chart-label {
+    font-size: 7px;
+  }
+  .business-site .table-scroll table {
+    font-size: 10px;
+  }
+  .business-site .table-scroll td,
+  .business-site .table-scroll th {
+    padding-inline: 10px;
+  }
+  .business-site .table-scroll th {
+    font-size: 8px;
+  }
+  .business-site .table-scroll td strong {
+    font-size: 10px;
+  }
+  .business-site .table-scroll td small {
+    font-size: 8px;
+  }
+  .business-site .status-select {
+    font-size: 8px;
+  }
+  .business-site .table-controls > select,
+  .business-site .table-search input {
+    font-size: 9px;
+  }
+  .business-site .lab-conversion > p {
+    font-size: 12px;
+  }
+  .business-site .lab-conversion .text-link {
+    font-size: 11px;
+  }
+  .business-site .flow-steps li {
+    font-size: 10px;
+  }
+  .business-site .experiment-intro > p,
+  .business-site .ai-scenarios > p {
+    font-size: 12px;
+  }
+  .business-site .flow-result {
+    font-size: 11px;
+  }
+  .business-site .ai-response li {
+    font-size: 10px;
+  }
+  .business-process {
+    padding-block: 48px;
+  }
+  .business-process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 45px;
+  }
+  .business-process-steps h3 {
+    font-size: 19px;
+    margin-top: 12px;
+  }
+  .business-process-steps p {
+    font-size: 12px;
+  }
+  .business-site .studies {
+    padding-block: 48px;
+  }
+  .business-site .study-meta h3 {
+    font-size: 23px;
+  }
+  .business-site .study-meta > p {
+    font-size: 11px;
+  }
+  .business-site .study-meta > .eyebrow {
+    font-size: 7px;
+  }
+  .business-site .study-meta > .eyebrow > small {
+    font-size: 6px;
+  }
+  .business-site .simulator h2 {
+    font-size: 34px;
+    letter-spacing: -1.2px;
+  }
+  .business-site .simulator-heading > p {
+    font-size: 11px;
+    max-width: 240px;
+  }
+  .business-site .range-control > div:first-child {
+    font-size: 10px;
+  }
+  .business-site .range-control output {
+    font-size: 11px;
+  }
+  .business-site .recovered > span {
+    font-size: 7px;
+  }
+  .business-site .recovered output {
+    font-size: 76px;
+  }
+  .business-site .recovered > p {
+    font-size: 10px;
+  }
+  .business-site .equivalent-values > div > span {
+    font-size: 9px;
+  }
+  .business-site .equivalent-values output {
+    font-size: 24px;
+  }
+  .business-site .simulator-bottom > p {
+    font-size: 9px;
+  }
+  .business-site .simulator-bottom > .button {
+    font-size: 10px;
+  }
+  .business-site .comparison {
+    padding-block: 44px;
+  }
+  .business-site .comparison > h2 {
+    font-size: 39px;
+    letter-spacing: -1.5px;
+  }
+  .business-site .comparison-body {
+    gap: 35px;
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+  .business-site .comparison-copy > p:first-child {
+    font-size: 13px;
+  }
+  .business-site .comparison-toggle button {
+    font-size: 11px;
+    padding: 11px 13px;
+  }
+  .business-site .sector-label {
+    font-size: 10px;
+    gap: 12px;
+  }
+  .business-site .comparison-explanation {
+    font-size: 11px;
+  }
+  .business-site .comparison-copy > .small-note {
+    font-size: 6px;
+  }
+  .business-site .map-module {
+    font-size: 8px;
+    padding: 10px 8px;
+    min-width: 85px;
+  }
+  .business-site .map-module.unavailable {
+    font-size: 5.5px;
+  }
+  .business-site .map-center {
+    font-size: 13px;
+    padding: 17px 13px;
+  }
+  .business-site .map-center > span {
+    font-size: 4.5px;
+  }
+  .business-site .comparison-label {
+    font-size: 6px;
+  }
+  .business-site .comparison-foot {
+    font-size: 8px;
+  }
+  .business-faq {
+    gap: 40px;
+    grid-template-columns: 0.8fr 1.2fr;
+    padding-block: 50px;
+  }
+  .business-faq h2 {
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+  .business-faq > div > p {
+    font-size: 12px;
+  }
+  .business-faq summary {
+    font-size: 12px;
+    line-height: 1.75;
+    padding-block: 18px;
+  }
+  .business-faq details > p {
+    font-size: 11px;
+  }
+  .business-final {
+    padding-block: 47px;
+  }
+  .business-final > .business-wrap {
+    gap: 35px;
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+  .business-final h2 {
+    font-size: 34px;
+    letter-spacing: -1.1px;
+  }
+  .business-final p {
+    font-size: 12px;
+  }
+  .business-final .business-button {
+    font-size: 10px;
+    gap: 16px;
+    padding-inline: 15px;
+  }
+  .business-final .business-eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+  .business-final-offers > a {
+    gap: 11px;
+    padding: 16px 13px;
+  }
+  .business-final-offers > a > span {
+    width: 33px;
+    height: 33px;
+  }
+  .business-final-offers > a > span > svg {
+    width: 18px;
+  }
+  .business-final-offers strong {
+    font-size: 12px;
+  }
+  .business-final-offers small {
+    font-size: 9px;
+  }
+  .business-final-offers > a > svg {
+    width: 15px;
+  }
+  .business-site .contact {
+    gap: 45px;
+    padding-block: 50px;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+  .business-site .contact h2 {
+    font-size: 37px;
+    letter-spacing: -1.3px;
+  }
+  .business-site .contact-intro > p {
+    font-size: 12px;
+  }
+  .business-site .contact-mode {
+    font-size: 10px;
+  }
+  .business-site .contact-mode > p {
+    font-size: 10px;
+  }
+  .business-site .contact-intro > .eyebrow {
+    font-size: 8px;
+  }
+  .business-site .form-field {
+    font-size: 11px;
+  }
+  .business-site .form-field input,
+  .business-site .form-field select,
+  .business-site .form-field textarea {
+    font-size: 12px;
+  }
+  .business-site .form-field input::placeholder,
+  .business-site .form-field textarea::placeholder {
+    font-size: 10px;
+  }
+  .business-site .form-grid {
+    gap: 24px 17px;
+  }
+  .business-site .consent {
+    font-size: 9px;
+  }
+  .business-footer-top {
+    grid-template-columns: 1.5fr 1fr 0.7fr;
+    gap: 30px;
+  }
+  .business-footer-links {
+    font-size: 11px;
+  }
+  .business-footer-top > div:first-child > p {
+    font-size: 11px;
+  }
+  .business-footer-bottom {
+    font-size: 9px;
+  }
+  .business-privacy {
+    font-size: 9px;
+  }
+}
+@media (max-width: 767px) {
+  .business-wrap {
+    width: calc(100% - 40px);
+  }
+  .business-site .section-pad {
+    padding-inline: 20px;
+  }
+  .business-utility > .business-wrap {
+    justify-content: center;
+    padding-block: 7px;
+    font-size: 9px;
+  }
+  .business-utility .business-wrap > span:last-child {
+    display: none;
+  }
+  .business-header-inner {
+    min-height: 74px;
+    gap: 20px;
+  }
+  .business-brand {
+    font-size: 28px;
+    letter-spacing: -1.7px;
+  }
+  .business-brand-lockup > span {
+    font-size: 5.6px;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+  .business-header-cta {
+    display: none;
+  }
+  .business-menu-toggle {
+    display: flex !important;
+    margin-left: auto;
+  }
+  .business-header nav {
+    display: none;
+    position: absolute;
+    top: 74px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0;
+    padding: 12px 20px 21px;
+    background: white;
+    border-bottom: 1px solid #d7e2f1;
+    gap: 0;
+    box-shadow: 0 15px 25px #14396708;
+  }
+  .business-header nav.is-open {
+    display: flex;
+  }
+  .business-header nav > a {
+    font-size: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e4ebf5;
+  }
+  .business-mobile-contact {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    color: #2563eb !important;
+    border-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .business-hero {
+    padding-top: 30px;
+    background: #f5f8fd;
+  }
+  .business-hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .business-hero-copy {
+    padding: 0;
+    align-self: stretch;
+  }
+  .business-hero-copy > .business-eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.5px;
+    gap: 7px;
+  }
+  .business-hero-copy > .business-eyebrow > span {
+    height: 4px;
+    width: 4px;
+  }
+  .business-hero h1 {
+    font-size: 43px;
+    line-height: 1.12;
+    letter-spacing: -1.9px;
+    max-width: 530px;
+    margin-top: 18px;
+  }
+  .business-hero h1 > span {
+    display: block;
+  }
+  .business-hero-copy > p {
+    font-size: 13px;
+    line-height: 1.9;
+    margin-top: 20px;
+    max-width: 500px;
+  }
+  .business-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .business-hero-actions > .business-button {
+    justify-content: space-between;
+    min-height: 49px;
+    font-size: 12px;
+    padding-inline: 17px;
+  }
+  .business-hero-explore {
+    align-self: center;
+    font-size: 12px;
+    gap: 11px;
+  }
+  .business-hero-explore > span {
+    height: 25px;
+    width: 25px;
+  }
+  .business-hero-assurance {
+    justify-content: center;
+    font-size: 9px;
+    gap: 18px;
+    margin-top: 19px;
+  }
+  .business-hero-assurance svg {
+    width: 13px;
+  }
+  .sales-product-stage {
+    align-self: stretch;
+    width: 100%;
+    padding-bottom: 62px;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+  .sales-product-tabs {
+    margin: 0 0 9px;
+    gap: 3px;
+    padding: 4px;
+  }
+  .sales-product-tabs > button {
+    font-size: 9px;
+    gap: 5px;
+    min-height: 36px;
+    white-space: normal;
+    line-height: 1.45;
+  }
+  .sales-product-tabs > button > svg {
+    width: 13px;
+  }
+  .sales-product-window {
+    border-radius: 7px;
+    box-shadow: 0 10px 30px #183e6d0b;
+  }
+  .sales-window-bar {
+    min-height: 43px;
+    padding: 0 11px;
+    gap: 8px;
+  }
+  .sales-window-bar > div {
+    font-size: 6px;
+    gap: 5px;
+  }
+  .sales-window-bar > div > svg {
+    width: 9px;
+  }
+  .preview-brand {
+    font-size: 11px;
+  }
+  .sales-demo-label {
+    font-size: 4.5px;
+    letter-spacing: 0.2px;
+  }
+  .sales-preview-body {
+    min-height: 326px;
+  }
+  .sales-system-preview {
+    min-height: 326px;
+    grid-template-columns: 77px minmax(0, 1fr);
+  }
+  .preview-sidebar {
+    padding: 18px 5px 15px;
+    gap: 4px;
+  }
+  .preview-sidebar > span {
+    font-size: 4.2px;
+    letter-spacing: 0.4px;
+    padding-left: 3px;
+    margin-bottom: 9px;
+  }
+  .preview-sidebar > button {
+    font-size: 7px;
+    gap: 4px;
+    padding: 10px 4px;
+    min-height: 35px;
+  }
+  .preview-sidebar > button svg {
+    width: 11px;
+  }
+  .preview-sidebar > div {
+    font-size: 5.5px;
+    gap: 4px;
+    padding: 30px 3px 0;
+  }
+  .preview-sidebar > div svg {
+    width: 12px;
+  }
+  .preview-workspace {
+    padding: 17px 11px 13px;
+  }
+  .preview-workspace-title {
+    gap: 9px;
+  }
+  .preview-workspace-title h3 {
+    font-size: 14px;
+    letter-spacing: -0.35px;
+    line-height: 1.35;
+    margin-top: 5px;
+  }
+  .preview-workspace-title small {
+    font-size: 5px;
+    letter-spacing: 0.6px;
+  }
+  .preview-account {
+    height: 21px;
+    width: 21px;
+    font-size: 6px;
+  }
+  .preview-stats {
+    margin-top: 16px;
+    gap: 6px;
+  }
+  .preview-stats > div {
+    padding: 9px 7px;
+  }
+  .preview-stats > div > span {
+    font-size: 5.5px;
+    line-height: 1.5;
+    min-height: 16px;
+    white-space: normal;
+  }
+  .preview-stats strong {
+    font-size: 18px;
+    gap: 5px;
+    letter-spacing: -0.5px;
+    margin-top: 5px;
+  }
+  .preview-stats strong > i {
+    font-size: 4.8px;
+    max-width: 30px;
+  }
+  .preview-order-list {
+    margin-top: 16px;
+  }
+  .preview-list-label {
+    font-size: 4.6px;
+    letter-spacing: 0.4px;
+    padding-bottom: 7px;
+  }
+  .preview-order-list > div:not(.preview-list-label) {
+    padding: 10px 0;
+    gap: 5px;
+  }
+  .preview-order-icon {
+    width: 21px;
+    height: 24px;
+  }
+  .preview-order-icon svg {
+    width: 12px;
+  }
+  .preview-order-list strong,
+  .preview-stock-list strong {
+    font-size: 7px;
+  }
+  .preview-order-list small,
+  .preview-stock-list small {
+    font-size: 5.5px;
+    line-height: 1.6;
+    max-width: 79px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .preview-order-status {
+    font-size: 4.5px;
+    padding: 4px 3px;
+    max-width: 64px;
+  }
+  .preview-connected {
+    font-size: 5px;
+    line-height: 1.5;
+    gap: 3px;
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+  .preview-connected svg {
+    width: 10px;
+  }
+  .preview-stock-list {
+    margin-top: 19px;
+  }
+  .preview-stock-list > div {
+    gap: 6px;
+    padding: 14px 0;
+  }
+  .preview-stock-list > div > span:last-child {
+    font-size: 8px;
+  }
+  .preview-finance {
+    margin-top: 19px;
+  }
+  .preview-finance > div {
+    padding: 11px;
+    gap: 3px 10px;
+  }
+  .preview-finance > div > span {
+    font-size: 7px;
+  }
+  .preview-finance strong {
+    font-size: 22px;
+  }
+  .preview-finance p {
+    font-size: 6px;
+    line-height: 1.8;
+  }
+  .sales-preview-cta {
+    padding: 12px;
+    gap: 10px;
+  }
+  .sales-preview-cta strong {
+    font-size: 9px;
+    line-height: 1.6;
+  }
+  .sales-preview-cta > span {
+    font-size: 7px;
+  }
+  .sales-preview-cta > svg {
+    width: 17px;
+  }
+  .sales-product-caption {
+    font-size: 5.5px;
+    line-height: 1.7;
+    gap: 14px;
+    padding-top: 10px;
+  }
+  .sales-product-caption > span:first-child {
+    max-width: 215px;
+  }
+  .sales-product-caption > span:last-child {
+    max-width: 95px;
+    white-space: normal;
+    text-align: right;
+  }
+  .sales-product-side-note {
+    bottom: 0;
+    right: 8px;
+    width: 285px;
+    gap: 10px;
+    padding: 11px 12px;
+  }
+  .sales-product-side-note > span {
+    height: 29px;
+    width: 29px;
+  }
+  .sales-product-side-note strong {
+    font-size: 9px;
+  }
+  .sales-product-side-note small {
+    font-size: 7px;
+  }
+  .sales-product-side-note > svg {
+    width: 13px;
+  }
+  .sales-automation-preview,
+  .sales-ai-preview {
+    min-height: 326px;
+    padding: 18px 15px 13px;
+  }
+  .sales-preview-intro {
+    gap: 10px;
+  }
+  .sales-preview-intro h3 {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .sales-preview-intro small {
+    font-size: 5.3px;
+    letter-spacing: 0.5px;
+  }
+  .preview-feature-symbol {
+    height: 32px;
+    width: 32px;
+  }
+  .preview-feature-symbol > svg {
+    width: 17px;
+  }
+  .sales-flow {
+    margin-block: 17px 12px;
+  }
+  .sales-flow > div {
+    gap: 11px;
+    min-height: 47px;
+  }
+  .sales-flow > div strong {
+    font-size: 10px;
+  }
+  .sales-flow > div small {
+    font-size: 7px;
+  }
+  .sales-flow > div > span:first-child {
+    height: 26px;
+    width: 26px;
+    font-size: 8px;
+  }
+  .sales-flow-footer {
+    gap: 10px;
+    padding-top: 11px;
+  }
+  .sales-flow-footer > span {
+    font-size: 7px;
+    line-height: 1.6;
+    max-width: 155px;
+  }
+  .sales-flow-footer > button {
+    font-size: 8px;
+    padding: 9px 10px;
+    gap: 5px;
+  }
+  .sales-flow-footer > button > svg {
+    width: 12px;
+  }
+  .sales-preview-note {
+    font-size: 6px;
+    line-height: 1.7;
+  }
+  .sales-ai-options {
+    margin-top: 15px;
+    gap: 6px;
+  }
+  .sales-ai-options > button {
+    font-size: 8px;
+    min-height: 29px;
+    padding: 5px 11px;
+  }
+  .sales-ai-input {
+    padding: 12px;
+    margin-top: 11px;
+  }
+  .sales-ai-input > span {
+    font-size: 5.5px;
+    letter-spacing: 0.6px;
+  }
+  .sales-ai-input > p {
+    font-size: 10px;
+    line-height: 1.8;
+    margin-top: 6px;
+  }
+  .sales-ai-output {
+    padding: 12px;
+    margin-top: 10px;
+  }
+  .sales-ai-output strong {
+    font-size: 9px;
+  }
+  .sales-ai-output > div {
+    gap: 6px;
+  }
+  .sales-ai-output > div > svg {
+    width: 12px;
+  }
+  .sales-ai-output ul {
+    margin-top: 9px;
+    gap: 5px;
+  }
+  .sales-ai-output li {
+    font-size: 8px;
+  }
+  .sales-ai-output > span {
+    font-size: 6px;
+    margin-top: 10px;
+    padding-top: 8px;
+  }
+  .sales-ai-output > span > svg {
+    width: 11px;
+  }
+  .business-benefit-strip {
+    grid-template-columns: 1fr;
+    gap: 19px;
+    padding-block: 24px;
+    margin-top: 24px;
+  }
+  .business-benefit-strip > div {
+    gap: 14px;
+  }
+  .business-benefit-strip > div:not(:last-child):after {
+    display: none;
+  }
+  .business-benefit-strip strong {
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+  .business-benefit-strip > div > span {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .business-benefit-strip > div > svg {
+    width: 20px;
+  }
+  .business-section-heading {
+    display: block;
+    margin-bottom: 25px;
+  }
+  .business-section-heading h2 {
+    font-size: 31px;
+    line-height: 1.2;
+    letter-spacing: -1.05px;
+    margin-top: 15px;
+  }
+  .business-eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.65px;
+    line-height: 1.8;
+  }
+  .business-section-heading > p {
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 340px;
+    margin-top: 17px;
+  }
+  .business-problems {
+    padding-block: 43px;
+  }
+  .business-problem-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .business-problem-grid > a {
+    padding-top: 20px;
+  }
+  .business-problem-number {
+    font-size: 10px;
+  }
+  .business-problem-grid h3 {
+    font-size: 21px;
+    letter-spacing: -0.5px;
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+  .business-problem-grid p {
+    font-size: 12px;
+    line-height: 1.9;
+    margin-top: 10px;
+    max-width: none;
+  }
+  .business-problem-answer {
+    font-size: 11px;
+    margin-top: 17px;
+    gap: 8px;
+  }
+  .business-problem-answer > svg {
+    width: 15px;
+  }
+  .business-solutions {
+    padding-block: 42px 34px;
+  }
+  .business-offers-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 25px;
+  }
+  .business-offer {
+    padding: 25px 24px 0;
+  }
+  .business-offer-top > span {
+    height: 39px;
+    width: 39px;
+  }
+  .business-offer-top > span > svg {
+    width: 20px;
+  }
+  .business-offer-top > small {
+    font-size: 10px;
+  }
+  .business-offer h3 {
+    font-size: 28px;
+    letter-spacing: -0.8px;
+    line-height: 1.25;
+    max-width: 300px;
+    min-height: 0;
+    margin-top: 22px;
+  }
+  .business-offer .business-offer-benefit {
+    font-size: 14px;
+    min-height: 0;
+    line-height: 1.8;
+    margin-top: 15px;
+  }
+  .business-offer > p:not(.business-offer-benefit) {
+    font-size: 12px;
+    line-height: 1.9;
+    min-height: 0;
+    margin-top: 10px;
+  }
+  .offer-illustration {
+    height: 135px;
+    margin-top: 23px;
+    padding: 19px 17px;
+  }
+  .offer-art-brand {
+    font-size: 14px;
+  }
+  .offer-system-art > div {
+    gap: 7px;
+    margin-top: 13px;
+  }
+  .offer-system-art > div > span {
+    font-size: 7px;
+    padding: 9px 6px;
+    gap: 5px;
+  }
+  .offer-system-art > div > span svg {
+    display: block;
+    width: 10px;
+  }
+  .offer-illustration > small {
+    font-size: 5.5px;
+    letter-spacing: 0.5px;
+  }
+  .offer-system-art > small {
+    margin-top: 11px;
+  }
+  .offer-flow-art > div {
+    gap: 6px;
+    margin-top: 15px;
+  }
+  .offer-flow-art > div > span {
+    padding: 10px;
+    font-size: 8px;
+    gap: 5px;
+    flex: 1;
+  }
+  .offer-flow-art > div > span > svg {
+    width: 10px;
+  }
+  .offer-flow-art > div > svg {
+    width: 13px;
+  }
+  .offer-flow-art > p {
+    font-size: 7px;
+    margin-top: 13px;
+  }
+  .offer-ai-art {
+    gap: 10px;
+  }
+  .offer-ai-art > div {
+    font-size: 8px;
+    gap: 8px;
+    padding: 9px 11px;
+  }
+  .offer-ai-art > div > svg {
+    width: 14px;
+  }
+  .offer-ai-art > div:nth-child(2) {
+    margin-left: 20px;
+  }
+  .offer-ai-art > small {
+    font-size: 5px;
+    letter-spacing: 0.35px;
+  }
+  .business-offer ul {
+    padding-block: 23px 24px;
+    gap: 12px;
+  }
+  .business-offer li {
+    font-size: 12px;
+    gap: 8px;
+  }
+  .business-offer li > svg {
+    width: 14px;
+  }
+  .business-offer-cta {
+    font-size: 12px;
+    padding-block: 19px 9px;
+    gap: 12px;
+  }
+  .business-offer-cta > svg {
+    width: 17px;
+  }
+  .business-offer-demo {
+    font-size: 11px;
+    gap: 8px;
+    padding-bottom: 21px;
+  }
+  .business-offer-demo > svg {
+    width: 14px;
+  }
+  .business-integration {
+    margin-top: 22px;
+    padding: 23px 21px;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .business-integration-symbol {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+  }
+  .business-integration-symbol > svg {
+    width: 21px;
+  }
+  .business-integration > div {
+    flex-basis: calc(100% - 55px);
+  }
+  .business-integration h3 {
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: -0.3px;
+  }
+  .business-integration p {
+    font-size: 11px;
+    line-height: 1.9;
+    margin-top: 10px;
+  }
+  .business-integration > a {
+    margin-left: 0;
+    align-self: flex-start;
+    font-size: 11px;
+    line-height: 1.6;
+    gap: 14px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .business-site .section-kicker {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+  .business-site .section-heading {
+    margin-top: 23px;
+    margin-bottom: 25px;
+    display: block;
+  }
+  .business-site .section-heading h2 {
+    font-size: 31px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+  }
+  .business-site .section-heading > p {
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 340px;
+    margin-top: 17px;
+  }
+  .business-site .laboratory {
+    padding-block: 42px 32px;
+  }
+  .business-site .lab-tabs {
+    gap: 0;
+  }
+  .business-site .lab-tabs > button {
+    font-size: 10px;
+    line-height: 1.5;
+    padding: 14px 6px 14px 0;
+    gap: 5px;
+    flex: 1;
+  }
+  .business-site .lab-tabs > button > span:first-child {
+    font-size: 6px;
+    line-height: 2;
+  }
+  .business-site .product-caption {
+    font-size: 9px;
+    line-height: 1.8;
+    padding-bottom: 16px;
+    max-width: 315px;
+  }
+  .business-site .dash-top {
+    height: 47px;
+    padding-inline: 12px;
+    gap: 9px;
+  }
+  .business-site .dash-workspace {
+    font-size: 10px;
+  }
+  .business-site .dash-top .demo-badge {
+    font-size: 5px;
+    padding: 5px;
+    letter-spacing: 0.3px;
+  }
+  .business-site .dash-layout {
+    display: flex;
+  }
+  .business-site .dash-sidebar {
+    padding: 0;
+    max-width: 100%;
+  }
+  .business-site .dash-sidebar nav {
+    padding: 5px 7px;
+  }
+  .business-site .dash-sidebar nav button {
+    font-size: 9px;
+    gap: 6px;
+    padding: 10px;
+    min-height: 38px;
+  }
+  .business-site .dash-sidebar nav button svg {
+    width: 13px;
+  }
+  .business-site .dash-main {
+    padding: 20px 12px 0;
+    min-height: 700px;
+  }
+  .business-site .dash-breadcrumb {
+    font-size: 7px;
+    margin-bottom: 11px;
+  }
+  .business-site .dash-heading h4 {
+    font-size: 24px;
+  }
+  .business-site .dash-heading p {
+    font-size: 8px;
+    line-height: 1.8;
+    max-width: 190px;
+  }
+  .business-site .dash-heading {
+    gap: 9px;
+  }
+  .business-site .dash-primary {
+    font-size: 8px;
+    padding: 9px 8px;
+    min-height: 33px;
+    gap: 4px;
+  }
+  .business-site .dash-primary svg {
+    width: 12px;
+  }
+  .business-site .dash-notice {
+    font-size: 7px;
+    min-height: 20px;
+  }
+  .business-site .dash-metrics {
+    gap: 5px;
+    margin-top: 5px;
+    margin-bottom: 13px;
+  }
+  .business-site .dash-metrics > div {
+    padding: 11px 7px;
+  }
+  .business-site .dash-metrics > div > span {
+    font-size: 6px;
+    line-height: 1.6;
+    min-height: 18px;
+  }
+  .business-site .dash-metrics > div > strong {
+    font-size: 18px;
+    letter-spacing: -0.6px;
+    margin-block: 7px 5px;
+  }
+  .business-site .dash-metrics > div > strong > small {
+    font-size: 6px;
+  }
+  .business-site .dash-metrics > div > small {
+    font-size: 5px;
+    line-height: 1.8;
+  }
+  .business-site .panel-title {
+    padding: 13px 11px;
+    gap: 8px;
+  }
+  .business-site .panel-title h5 {
+    font-size: 9px;
+  }
+  .business-site .panel-title > span,
+  .business-site .panel-title > div > span {
+    font-size: 6px;
+  }
+  .business-site .bar-chart {
+    padding: 18px 12px 14px;
+    gap: 10px;
+  }
+  .business-site .chart-value {
+    font-size: 6px;
+  }
+  .business-site .chart-label {
+    font-size: 6px;
+    line-height: 1.6;
+  }
+  .business-site .chart-bar-track {
+    height: 75px;
+  }
+  .business-site .table-controls {
+    padding: 0 10px 11px;
+    gap: 7px;
+  }
+  .business-site .table-search input {
+    font-size: 8px;
+  }
+  .business-site .table-controls > select {
+    font-size: 8px;
+    max-width: 120px;
+    padding: 6px;
+  }
+  .business-site .table-scroll table {
+    font-size: 10px;
+    min-width: 480px;
+  }
+  .business-site .table-scroll th {
+    font-size: 8px;
+    padding: 11px 10px;
+  }
+  .business-site .table-scroll td {
+    padding: 11px 10px;
+  }
+  .business-site .table-scroll td strong {
+    font-size: 10px;
+  }
+  .business-site .table-scroll td small {
+    font-size: 7px;
+    max-width: 105px;
+  }
+  .business-site .status-select {
+    font-size: 9px;
+    min-height: 30px;
+    max-width: 128px;
+  }
+  .business-site .dash-bottom {
+    font-size: 6px;
+    line-height: 1.8;
+    padding-block: 1px 12px;
+  }
+  .business-site .stock-list > div,
+  .business-site .client-list > div,
+  .business-site .automation-rules > div {
+    padding: 17px 12px;
+    gap: 11px;
+  }
+  .business-site .stock-list strong,
+  .business-site .client-list strong {
+    font-size: 10px;
+  }
+  .business-site .stock-list small,
+  .business-site .client-list small {
+    font-size: 7px;
+  }
+  .business-site .dash-secondary {
+    font-size: 7px;
+    min-height: 29px;
+    padding: 6px;
+  }
+  .business-site .stock-warning,
+  .business-site .stock-ok {
+    font-size: 7px;
+  }
+  .business-site .automation-rules > div > span {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+  .business-site .lab-conversion {
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .business-site .lab-conversion > p {
+    font-size: 12px;
+  }
+  .business-site .lab-conversion .text-link {
+    font-size: 11px;
+    gap: 20px;
+  }
+  .business-site .automation-demo,
+  .business-site .ai-demo {
+    padding: 23px 18px;
+  }
+  .business-site .experiment-intro h4,
+  .business-site .ai-scenarios h4 {
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+  .business-site .experiment-intro > p,
+  .business-site .ai-scenarios > p {
+    font-size: 11px;
+    line-height: 1.85;
+  }
+  .business-site .automation-toolbar label {
+    font-size: 10px;
+  }
+  .business-site .automation-toolbar select {
+    font-size: 12px;
+    min-height: 46px;
+  }
+  .business-site .automation-toolbar > .button {
+    font-size: 11px;
+    min-height: 46px;
+  }
+  .business-site .flow-steps li {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .business-site .flow-result {
+    font-size: 10px;
+  }
+  .business-site .demo-disclaimer {
+    font-size: 9px;
+    line-height: 1.9;
+  }
+  .business-site .ai-scenarios > div > button > span {
+    font-size: 11px;
+  }
+  .business-site .ai-scenarios > div > button {
+    min-height: 40px;
+  }
+  .business-site .ai-message > p {
+    font-size: 12px;
+  }
+  .business-site .ai-response li {
+    font-size: 9px;
+  }
+  .business-site .ai-action > p {
+    font-size: 11px;
+  }
+  .business-process {
+    padding-block: 42px;
+  }
+  .business-process-track {
+    margin-top: 29px;
+  }
+  .business-process-steps {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 0;
+  }
+  .business-process-steps article {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 0 15px;
+    padding: 24px 0;
+    border-bottom: 1px solid #d6e3f4;
+  }
+  .business-process-steps article > span {
+    grid-row: 1/3;
+    font-size: 13px;
+    padding-top: 3px;
+  }
+  .business-process-steps h3 {
+    font-size: 19px;
+    line-height: 1.4;
+    margin: 0;
+    letter-spacing: -0.4px;
+  }
+  .business-process-steps p {
+    font-size: 12px;
+    line-height: 1.9;
+    margin-top: 10px;
+  }
+  .business-site .studies {
+    padding-block: 42px;
+  }
+  .business-site .study-stock {
+    margin-top: 0;
+  }
+  .business-site .study-meta h3 {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+  .business-site .study-meta > p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .business-site .study-meta > .eyebrow {
+    font-size: 7px;
+  }
+  .business-site .study-meta > .eyebrow > small {
+    font-size: 5px;
+  }
+  .business-site .simulator {
+    padding-top: 29px;
+    padding-bottom: 30px;
+  }
+  .business-site .simulator-heading {
+    margin-top: 26px;
+  }
+  .business-site .simulator h2 {
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -1.2px;
+  }
+  .business-site .simulator-heading > p {
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 310px;
+  }
+  .business-site .simulator .section-kicker {
+    font-size: 8px;
+  }
+  .business-site .range-control > div:first-child {
+    font-size: 11px;
+  }
+  .business-site .range-control output {
+    font-size: 12px;
+  }
+  .business-site .simulator-layout {
+    margin-top: 30px;
+  }
+  .business-site .simulator-results {
+    padding-top: 28px;
+    margin-top: 5px;
+  }
+  .business-site .recovered > span {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+  .business-site .recovered output {
+    font-size: 75px;
+    letter-spacing: -3px;
+  }
+  .business-site .recovered > div > span {
+    font-size: 23px;
+  }
+  .business-site .recovered > p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .business-site .equivalent-values > div > span {
+    font-size: 10px;
+  }
+  .business-site .equivalent-values output {
+    font-size: 22px;
+    letter-spacing: -0.6px;
+    white-space: normal;
+  }
+  .business-site .simulator-bottom {
+    gap: 22px;
+  }
+  .business-site .simulator-bottom > p {
+    font-size: 9px;
+    line-height: 1.9;
+  }
+  .business-site .simulator-bottom > .button {
+    font-size: 11px;
+    min-height: 49px;
+  }
+  .business-site .comparison {
+    padding-block: 40px;
+  }
+  .business-site .comparison > h2 {
+    font-size: 32px;
+    letter-spacing: -1.1px;
+    line-height: 1.2;
+    margin-top: 25px;
+  }
+  .business-site .comparison-body {
+    display: flex;
+    margin-top: 28px;
+    gap: 27px;
+  }
+  .business-site .comparison-copy > p:first-child {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .business-site .comparison-toggle button {
+    font-size: 11px;
+    min-height: 42px;
+    padding: 10px 14px;
+  }
+  .business-site .sector-label {
+    font-size: 11px;
+    gap: 12px;
+    margin-top: 22px;
+  }
+  .business-site .sector-label select {
+    font-size: 12px;
+    min-height: 36px;
+  }
+  .business-site .comparison-explanation {
+    font-size: 12px;
+    line-height: 1.85;
+    margin-top: 20px;
+    min-height: 0;
+  }
+  .business-site .comparison-copy > .small-note {
+    font-size: 6px;
+    margin-top: 17px;
+  }
+  .business-site .comparison-label {
+    font-size: 5px;
+  }
+  .business-site .map-module {
+    font-size: 7px;
+    padding: 9px 7px;
+    min-width: 81px;
+  }
+  .business-site .map-module.unavailable {
+    font-size: 5px;
+  }
+  .business-site .map-center {
+    font-size: 11px;
+    padding: 15px 11px;
+  }
+  .business-site .map-center > span {
+    font-size: 4px;
+  }
+  .business-site .comparison-foot {
+    font-size: 7px;
+  }
+  .business-faq {
+    display: block;
+    padding-block: 42px;
+  }
+  .business-faq h2 {
+    font-size: 32px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin-top: 16px;
+  }
+  .business-faq > div > p {
+    font-size: 12px;
+    margin-top: 17px;
+    line-height: 1.9;
+    max-width: 340px;
+  }
+  .business-faq > div:last-child {
+    margin-top: 27px;
+  }
+  .business-faq summary {
+    font-size: 12px;
+    line-height: 1.8;
+    padding-block: 18px;
+    gap: 19px;
+  }
+  .business-faq summary > svg {
+    width: 17px;
+  }
+  .business-faq details > p {
+    font-size: 12px;
+    line-height: 1.9;
+    padding-bottom: 20px;
+  }
+  .business-final {
+    padding-block: 40px;
+  }
+  .business-final > .business-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .business-final .business-eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+  .business-final h2 {
+    font-size: 34px;
+    line-height: 1.16;
+    letter-spacing: -1.2px;
+    margin-top: 19px;
+  }
+  .business-final p {
+    font-size: 12px;
+    line-height: 1.9;
+    margin-top: 19px;
+  }
+  .business-final p > br {
+    display: none;
+  }
+  .business-final .business-button {
+    width: 100%;
+    font-size: 11px;
+    padding-inline: 17px;
+    min-height: 49px;
+    margin-top: 23px;
+    gap: 15px;
+  }
+  .business-final-offers {
+    gap: 11px;
+  }
+  .business-final-offers > a {
+    padding: 18px 16px;
+    gap: 13px;
+  }
+  .business-final-offers > a > span {
+    height: 35px;
+    width: 35px;
+  }
+  .business-final-offers > a > span > svg {
+    width: 19px;
+  }
+  .business-final-offers strong {
+    font-size: 13px;
+  }
+  .business-final-offers small {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+  .business-final-offers > a > svg {
+    width: 17px;
+  }
+  .business-site .contact {
+    display: block;
+    padding-block: 43px;
+  }
+  .business-site .contact-intro > .eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+  .business-site .contact h2 {
+    font-size: 38px;
+    letter-spacing: -1.3px;
+    line-height: 1.15;
+    margin-top: 22px;
+  }
+  .business-site .contact-intro > p {
+    font-size: 13px;
+    line-height: 1.85;
+    max-width: 340px;
+    margin-top: 20px;
+  }
+  .business-site .contact-mode {
+    font-size: 10px;
+    max-width: 335px;
+    margin-top: 25px;
+  }
+  .business-site .contact-mode > p {
+    font-size: 10px;
+    line-height: 1.85;
+  }
+  .business-site .briefing-form {
+    margin-top: 32px;
+  }
+  .business-site .form-grid {
+    gap: 24px 18px;
+  }
+  .business-site .form-field {
+    font-size: 11px;
+    gap: 8px;
+  }
+  .business-site .form-field input,
+  .business-site .form-field select,
+  .business-site .form-field textarea {
+    font-size: 12px;
+    min-height: 45px;
+    padding-top: 10px;
+    padding-bottom: 12px;
+  }
+  .business-site .form-field input::placeholder,
+  .business-site .form-field textarea::placeholder {
+    font-size: 10px;
+  }
+  .business-site .form-field small {
+    font-size: 7px;
+  }
+  .business-site .consent {
+    font-size: 9px;
+    line-height: 1.85;
+    gap: 9px;
+  }
+  .business-site .consent input {
+    width: 15px;
+    height: 15px;
+    margin-top: 3px;
+  }
+  .business-site .contact-submit {
+    font-size: 12px;
+    min-height: 50px;
+    padding-inline: 18px;
+  }
+  .business-site .form-message {
+    font-size: 11px;
+  }
+  .business-site .field-error {
+    font-size: 10px;
+  }
+  .business-site .briefing-context > div > span {
+    font-size: 6px;
+    line-height: 1.9;
+  }
+  .business-site .briefing-context strong {
+    font-size: 12px;
+  }
+  .business-site .briefing-context small {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+  .business-footer {
+    padding-top: 34px;
+    padding-bottom: 19px;
+  }
+  .business-footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 27px 22px;
+  }
+  .business-footer-top > div:first-child {
+    grid-column: 1/-1;
+  }
+  .business-footer-top > div:first-child > p {
+    font-size: 11px;
+    line-height: 1.9;
+    margin-top: 14px;
+  }
+  .business-footer-links {
+    font-size: 11px;
+    gap: 9px;
+  }
+  .business-footer-links > span {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .business-privacy {
+    font-size: 9px;
+    margin-top: 29px;
+  }
+  .business-privacy p {
+    font-size: 10px;
+    line-height: 1.9;
+  }
+  .business-footer-bottom {
+    font-size: 8px;
+    line-height: 1.8;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    margin-top: 21px;
+  }
+  .business-footer-bottom > span:first-child {
+    width: 100%;
+  }
+  .business-footer-bottom > a {
+    font-size: 9px;
+    margin-left: auto;
+    gap: 7px;
+  }
+  .business-site .study-dialog p,
+  .business-site .order-dialog > p {
+    font-size: 12px;
+  }
+}
+@media (max-width: 370px) {
+  .business-wrap {
+    width: calc(100% - 36px);
+  }
+  .business-site .section-pad {
+    padding-inline: 18px;
+  }
+  .business-hero h1 {
+    font-size: 39px;
+  }
+  .business-hero-copy > .business-eyebrow {
+    font-size: 6px;
+  }
+  .sales-product-tabs > button {
+    font-size: 8px;
+    gap: 4px;
+  }
+  .sales-system-preview {
+    grid-template-columns: 69px minmax(0, 1fr);
+  }
+  .preview-workspace {
+    padding-inline: 9px;
+  }
+  .preview-sidebar > button {
+    font-size: 6.5px;
+  }
+  .preview-stats strong {
+    font-size: 16px;
+  }
+  .preview-order-status {
+    font-size: 4px;
+  }
+  .preview-order-list small {
+    max-width: 67px;
+  }
+  .sales-product-side-note {
+    width: 271px;
+    right: 3px;
+  }
+  .business-hero-assurance {
+    font-size: 8px;
+    gap: 14px;
+  }
+  .business-section-heading h2,
+  .business-site .section-heading h2 {
+    font-size: 29px;
+  }
+  .business-site .dash-metrics > div > strong {
+    font-size: 16px;
+  }
+  .business-site .dash-heading h4 {
+    font-size: 22px;
+  }
+  .business-site .comparison > h2 {
+    font-size: 30px;
+  }
+  .business-final h2 {
+    font-size: 31px;
+  }
+  .business-site .contact h2 {
+    font-size: 35px;
+  }
+  .business-site .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .business-button.primary:hover {
+    transform: none;
+  }
+  .sales-flow-running {
+    animation: none;
+  }
+}

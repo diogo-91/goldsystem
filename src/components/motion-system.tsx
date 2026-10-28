@@ -8,93 +8,62 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function MotionSystem() {
   useEffect(() => {
-    const mm = gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
+    const media = gsap.matchMedia();
+    media.add("(prefers-reduced-motion: no-preference)", () => {
       gsap.fromTo(
-        ".hero-line > span",
-        { yPercent: 105, opacity: 0 },
+        ".business-hero-copy > *",
+        { y: 16, opacity: 0 },
         {
-          yPercent: 0,
+          y: 0,
           opacity: 1,
-          duration: 1,
-          stagger: 0.12,
-          ease: "power3.out",
+          duration: 0.65,
+          stagger: 0.07,
+          ease: "power2.out",
           clearProps: "all",
         },
       );
       gsap.fromTo(
-        ".hero-developed",
-        { y: 30, opacity: 0 },
+        ".sales-product-stage",
+        { y: 18, opacity: 0.25 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.95,
-          delay: 0.55,
-          ease: "power3.out",
+          duration: 0.75,
+          delay: 0.12,
+          ease: "power2.out",
           clearProps: "all",
         },
       );
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
         gsap.fromTo(
           element,
-          { y: 32, opacity: 0.15 },
+          { y: 18, opacity: 0.5 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.8,
+            duration: 0.65,
             ease: "power2.out",
             scrollTrigger: { trigger: element, start: "top 94%", once: true },
             clearProps: "all",
           },
         );
       });
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".transformation",
-          start: "top 65%",
-          end: "bottom 85%",
-          scrub: 0.7,
-        },
-      });
-      timeline
-        .to(
-          ".chaos-piece",
-          { x: 0, y: 0, rotation: 0, stagger: 0.035, ease: "power1.inOut" },
-          0,
-        )
-        .fromTo(
-          ".network-line",
-          { strokeDashoffset: 420 },
-          { strokeDashoffset: 0, stagger: 0.06 },
-          0.05,
-        )
-        .to(
-          ".network-core",
-          { scale: 1.08, boxShadow: "0 0 80px #4a9fff40", duration: 0.5 },
-          0.2,
-        )
-        .fromTo(
-          ".transformation-result",
-          { opacity: 0.2, y: 25 },
-          { opacity: 1, y: 0 },
-          0.15,
-        );
       gsap.fromTo(
-        ".process-track-fill",
+        ".business-process-track > span",
         { scaleX: 0 },
         {
           scaleX: 1,
           ease: "none",
           scrollTrigger: {
-            trigger: ".process",
+            trigger: ".business-process",
             start: "top 75%",
             end: "bottom 70%",
-            scrub: 0.6,
+            scrub: 0.5,
           },
         },
       );
     });
-    return () => mm.revert();
+    return () => media.revert();
   }, []);
   return null;
 }

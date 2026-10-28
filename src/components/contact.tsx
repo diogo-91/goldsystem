@@ -54,13 +54,15 @@ export function Contact({
     ...fields,
     solution:
       fields.solution ||
-      (context.experience?.includes("Inteligência")
-        ? "Inteligência Artificial"
-        : context.experience?.includes("Automação") || context.simulation
-          ? "Automação inteligente"
-          : context.experience
-            ? "Software sob medida"
-            : ""),
+      (context.experience === "Sistemas conectados"
+        ? "Sistemas conectados"
+        : context.experience?.includes("Inteligência")
+          ? "Inteligência Artificial"
+          : context.experience?.includes("Automação") || context.simulation
+            ? "Automação inteligente"
+            : context.experience
+              ? "Software sob medida"
+              : ""),
   };
   function update(key: keyof BriefingFields, value: string | boolean) {
     setFields((prev) => ({ ...prev, [key]: value }));
@@ -193,17 +195,17 @@ export function Contact({
   return (
     <section id="contato" className="contact section-pad">
       <div className="contact-intro">
-        <span className="eyebrow">VAMOS CONSTRUIR O PRÓXIMO PASSO</span>
+        <span className="eyebrow">FALE SOBRE O SEU PROJETO</span>
         <h2>
-          Uma boa solução
+          Vamos entender
           <br />
-          começa com
+          o que a sua
           <br />
-          <span>uma conversa.</span>
+          <span>empresa precisa.</span>
         </h2>
         <p>
-          Conte o que precisa mudar na sua operação. Vamos dar forma às
-          possibilidades.
+          Conte seu desafio, os processos envolvidos e o que você gostaria de
+          melhorar. Esse é o ponto de partida para uma proposta sob medida.
         </p>
         <div className="contact-mode">
           <i />

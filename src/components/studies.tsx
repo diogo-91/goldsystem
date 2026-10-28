@@ -96,14 +96,14 @@ export function Studies() {
   return (
     <section className="studies section-pad" id="aplicacoes">
       <div className="section-kicker">
-        <span>05 / POSSIBILIDADES REAIS. CONTEXTOS DIFERENTES.</span>
+        <span>EXEMPLOS DE APLICAÇÃO</span>
         <span>ESTUDOS DE APLICAÇÃO</span>
       </div>
       <div className="section-heading" data-reveal>
         <h2>
-          Cada negócio tem sua lógica.
+          Veja onde uma solução
           <br />
-          <span className="text-muted">A tecnologia acompanha.</span>
+          <span className="text-muted">sob medida pode fazer sentido.</span>
         </h2>
         <p>
           Explorações conceituais de soluções sob medida. Demonstrações, sem

@@ -23,19 +23,15 @@ export function Comparison() {
   return (
     <section className="comparison section-pad" id="abordagem">
       <div className="section-kicker">
-        <span>06 / A SUA LÓGICA. A NOSSA ENGENHARIA.</span>
+        <span>TECNOLOGIA QUE ACOMPANHA O SEU NEGÓCIO</span>
         <span>PERSONALIZAÇÃO NA PRÁTICA</span>
       </div>
       <h2 data-reveal>
-        Não adaptamos sua
+        O sistema acompanha
         <br />
-        empresa ao sistema.
+        a lógica do seu negócio.
         <br />
-        <span>
-          Criamos o sistema
-          <br />
-          para sua empresa.
-        </span>
+        <span>Experimente a diferença.</span>
       </h2>
       <div className="comparison-body">
         <div className="comparison-copy">

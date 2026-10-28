@@ -220,28 +220,31 @@ function AiDemo() {
 
 export function Laboratory({
   onConvert,
+  tab,
+  setTab,
 }: {
   onConvert: (experience: string) => void;
+  tab: number;
+  setTab: (index: number) => void;
 }) {
-  const [tab, setTab] = useState(0);
   const baseId = useId();
   return (
     <section className="laboratory section-pad" id="experiencias">
       <div className="section-kicker">
-        <span>02 / TECNOLOGIA PARA EXPERIMENTAR</span>
+        <span>CONHEÇA AS SOLUÇÕES NA PRÁTICA</span>
         <span className="small-note">
           <i /> INTERATIVO, DE VERDADE.
         </span>
       </div>
       <div className="section-heading" data-reveal>
         <h2>
-          Não apenas mostramos.
+          Veja o que a tecnologia
           <br />
-          <span className="text-muted">Deixamos você experimentar.</span>
+          <span className="text-muted">pode fazer pela sua operação.</span>
         </h2>
         <p>
-          Uma pequena amostra do que acontece quando a tecnologia se adapta ao
-          seu negócio.
+          Explore as três frentes da GoldSystem. Navegue pelo sistema, simule um
+          processo e conheça exemplos de aplicação de IA.
         </p>
       </div>
       <div
@@ -298,10 +301,12 @@ export function Laboratory({
             <>
               <div className="product-caption">
                 <span>
-                  Imagine tudo funcionando.{" "}
-                  <strong>Agora imagine tudo conectado.</strong>
+                  Uma visão integrada de pedidos, estoque e financeiro.{" "}
+                  <strong>
+                    Explore os módulos e experimente cadastrar um pedido.
+                  </strong>
                 </span>
-                <span>Seu próximo sistema começa aqui. ↓</span>
+                <span>Ambiente interativo com dados fictícios.</span>
               </div>
               <Dashboard />
             </>

@@ -70,7 +70,7 @@ export function Simulator({
   return (
     <section id="simulador" className="simulator section-pad">
       <div className="section-kicker">
-        <span>03 / O VALOR DO SEU TEMPO</span>
+        <span>ENTENDA O POTENCIAL DE AUTOMAÇÃO</span>
         <span>SIMULADOR DE POSSIBILIDADES</span>
       </div>
       <div className="simulator-heading" data-reveal>
